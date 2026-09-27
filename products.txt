@@ -24,45 +24,35 @@
 
 Here is the corrected format with the **image field left blank (`||`)** and additional products added. I kept the same pipe-delimited structure:
 
-```text
-p1|LM358 Dual Op-Amp|🔧|ICs|DIP-8|8|12|240|Op-Amp,Single Supply,Low Bias Current||Dual independent, general-purpose operational amplifier. Single-supply operation from 3V to 32V, internally frequency-compensated for unity gain stability.
-p2|NE555 Precision Timer|⏱️|ICs|DIP-8|8|8|310|Timer,Astable,Monostable||Highly stable timer IC for generating accurate time delays or oscillation. Astable or monostable operation, sourcing/sinking up to 200mA.
-p3|74HC04 Hex Inverter|🔀|ICs|SOP-14|14|9|180|Logic Gate,CMOS,Schmitt Trigger||High-speed CMOS hex inverter with Schmitt-trigger inputs. Buffered outputs, 2V–6V supply range, fan-out of 10 LS-TTL loads.
-p4|ATmega328P Microcontroller|🧠|Microcontrollers|DIP-28|28|145|60|AVR,32KB Flash,20MHz||8-bit AVR RISC-based microcontroller, 32KB flash, 2KB SRAM, 23 GPIO lines. Runs at up to 20MHz, used in Arduino UNO boards.
-p5|ESP32-WROOM-32 Module|📡|Modules|SMD Module|38|295|85|Wi-Fi,Bluetooth LE,Dual-core||Dual-core Wi-Fi + Bluetooth LE MCU module. 4MB flash, integrated antenna, 34 programmable GPIOs, ideal for IoT development.
-p6|IRF540N Power MOSFET|⚡|Semiconductors|TO-220|3|35|150|N-Channel,100V,33A||N-channel power MOSFET, 100V VDS, 33A continuous drain current, low RDS(on) of 44mΩ. Common in motor driver and switching circuits.
-p7|LM7805 Voltage Regulator|🔌|Semiconductors|TO-220|3|18|220|5V Fixed,1.5A,Linear||Fixed 5V positive linear voltage regulator, 1.5A output current, internal thermal overload and short-circuit protection.
-p8|DS18B20 Digital Thermometer|🌡️|Sensors|TO-92|3|65|130|1-Wire,±0.5°C,Waterproof Variant||1-Wire digital temperature sensor, ±0.5°C accuracy from -10°C to +85°C, 9 to 12-bit configurable resolution, unique 64-bit serial code.
-p9|PC817 Optocoupler|🔗|ICs|DIP-4|4|11|260|Isolation,Phototransistor,5000Vrms||Phototransistor-output optocoupler providing 5000Vrms isolation between input LED and output transistor. Common in signal isolation circuits.
-p10|HC-05 Bluetooth Module|📶|Modules|SIP Breakout|6|225|70|UART,Master/Slave,10m Range||Serial Bluetooth 2.0 module with UART interface, master/slave configurable, 10m range, used for wireless serial communication.
-p11|1N4007 Rectifier Diode|➡️|Semiconductors|DO-41|2|2|500|1000V,1A,Rectifier||General-purpose rectifier diode, 1000V reverse voltage, 1A forward current. Widely used in power supply rectification.
-p12|MPU-6050 IMU Module|🎯|Sensors|QFN-24 Module|8|180|95|I2C,Gyroscope,Accelerometer||6-axis motion tracking device combining a 3-axis gyroscope and 3-axis accelerometer with I2C digital output.
-p13|Arduino Nano V3|🔬|Development Boards|Nano Board|30|120|100|ATmega328P,5V,USB||Compact ATmega328P-based development board with USB connectivity, 5V operation, 14 digital I/O pins and 8 analog inputs.
-p14|Arduino Uno R3|🟦|Development Boards|UNO Board|28|180|75|ATmega328P,5V,USB||Popular beginner-friendly development board based on ATmega328P with USB connectivity, 14 digital I/O pins and 6 analog inputs.
-p15|ESP32-C3 SuperMini|📶|Development Boards|SMD Board|16|95|120|Wi-Fi,BLE,RISC-V||Compact ESP32-C3 development board featuring 2.4GHz Wi-Fi, Bluetooth LE, RISC-V single-core processor and USB connectivity.
-p16|HC-SR04 Ultrasonic Sensor|📏|Sensors|Module|4|55|180|Ultrasonic,2-400cm,5V||Ultrasonic distance sensor capable of measuring approximately 2cm to 400cm using trigger and echo signals.
-p17|SG90 Micro Servo|⚙️|Actuators|9g Servo|3|45|150|180°,5V,Micro Servo||Lightweight 9g micro servo suitable for small robotic mechanisms, pan-tilt systems, model projects and Arduino applications.
-p18|OLED 0.96 Inch I2C Display|🖥️|Displays|OLED Module|4|85|100|128x64,I2C,SSD1306||Compact 0.96-inch monochrome OLED display with 128x64 resolution and I2C interface. Suitable for microcontroller dashboards and sensor displays.
-p19|L298N Motor Driver Module|🚗|Motor Drivers|Module|15|75|100|Dual H-Bridge,2A,DC Motor||Dual H-bridge motor driver module for controlling two DC motors or one stepper motor. Supports direction and speed control through PWM.
-p20|A4988 Stepper Motor Driver|🔄|Motor Drivers|Pololu Module|16|65|120|Stepper,Microstepping,35V||Compact stepper motor driver supporting adjustable current limiting and microstepping for precise motion-control applications.
-p21|BMP280 Pressure Sensor|🌤️|Sensors|SMD Module|4|70|110|I2C,SPI,Pressure,Temperature||Digital pressure and temperature sensor suitable for altitude estimation, weather monitoring and environmental measurement projects.
-p22|HC-SR501 PIR Motion Sensor|👁️|Sensors|Module|3|40|200|PIR,Motion Detection,5V||Passive infrared motion sensor module with adjustable sensitivity and delay settings for detecting movement from people and animals.
-p23|IR Receiver VS1838B|📥|Sensors|Through-Hole|3|12|300|IR,38kHz,Remote Control||38kHz infrared receiver designed for remote-control applications and Arduino-based wireless input projects.
-p24|2N2222 NPN Transistor|🔺|Semiconductors|TO-92|3|8|400|NPN,600mA,Switching||General-purpose NPN transistor suitable for switching, amplification, LED drivers and small relay-control circuits.
-p25|BC547 NPN Transistor|🔺|Semiconductors|TO-92|3|7|400|NPN,100mA,Amplifier||General-purpose NPN transistor commonly used for low-power amplification and switching applications.
-p26|2N3904 NPN Transistor|🔺|Semiconductors|TO-92|3|7|400|NPN,200mA,Switching||General-purpose NPN transistor suitable for low-power switching and amplifier circuits.
-p27|2N3906 PNP Transistor|🔻|Semiconductors|TO-92|3|8|400|PNP,200mA,Switching||General-purpose PNP transistor designed for switching and amplification in low-power electronic circuits.
-p28|IRFZ44N Power MOSFET|⚡|Semiconductors|TO-220|3|38|150|N-Channel,55V,49A||Popular N-channel power MOSFET for high-current switching applications, motor controllers and power electronics projects.
-p29|AMS1117 5V Regulator|🔋|Semiconductors|SOT-223|3|15|250|5V,LDO,800mA||Low-dropout linear voltage regulator providing a regulated 5V output for embedded and electronics projects.
-p30|AMS1117 3.3V Regulator|🔋|Semiconductors|SOT-223|3|15|250|3.3V,LDO,800mA||Low-dropout linear voltage regulator providing a regulated 3.3V output for microcontrollers and sensor modules.
-p31|1N4148 Switching Diode|➡️|Semiconductors|DO-35|2|3|500|Fast Switching,100V,150mA||Fast general-purpose switching diode commonly used in signal processing, logic circuits and protection applications.
-p32|SS14 Schottky Diode|➡️|Semiconductors|SMA|2|8|300|Schottky,40V,1A||Fast Schottky diode with low forward voltage drop, useful for power supplies, reverse-polarity protection and switching circuits.
-p33|BME280 Environmental Sensor|🌡️|Sensors|SMD Module|8|120|90|I2C,SPI,Temperature,Humidity||Integrated environmental sensor providing temperature, humidity and barometric pressure measurements through I2C or SPI.
-p34|HC-06 Bluetooth Module|📲|Modules|SIP Breakout|6|180|80|UART,Slave,10m Range||Bluetooth 2.0 serial communication module with UART interface, commonly used for wireless communication between microcontrollers and mobile devices.
-p35|Relay Module 1-Channel|🔘|Modules|Relay Board|3|45|180|5V,SPDT,10A||Single-channel relay module for switching higher-voltage or higher-current loads using a low-voltage microcontroller control signal.
-p36|Relay Module 4-Channel|🔘|Modules|Relay Board|12|95|120|5V,4-Channel,SPDT||Four-channel relay module for independently controlling multiple electrical loads from Arduino, ESP32 and other microcontroller boards.
-p37|RC522 RFID Module|🏷️|Modules|SPI Module|8|85|100|RFID,13.56MHz,SPI||13.56MHz RFID reader module using SPI communication, suitable for access control, identification and Arduino projects.
-p38|SG90 Servo Motor|⚙️|Actuators|9g Servo|3|45|150|180°,5V,Plastic Gear||Compact 9g servo motor with approximately 180-degree positional control, commonly used in robotics and small automation projects.
-p39|28BYJ-48 Stepper Motor|🔄|Actuators|5-Wire Stepper|5|55|100|5V,Geared,2048 Steps||5V geared stepper motor commonly used in Arduino robotics, positioning mechanisms and small automation projects.
-p40|ULN2003 Driver Module|⚙️|Motor Drivers|DIP-16 Module|16|25|180|Darlington Array,500mA,7-Channel||Seven-channel Darlington transistor array module commonly used for driving relays, LEDs and small stepper motors.
+# text
+# EXE QT Electronics — product catalog
+#
+#   id|name|icon|category|package|pins|price|stock|tags|image|description
+
+p1|I2C LCD Module|📟|Modules|I2C Module|4|40|2|LCD,I2C,Display||I2C backpack-equipped LCD module for easy 4-wire display wiring.
+p2|5mm LED - Red|🔴|Passives|5mm THT|2|3|10|LED,5mm,Red|/assets/led-red.jpg|Standard 5mm red LED for indicators and general-purpose lighting.
+p3|5mm LED - Green|🟢|Passives|5mm THT|2|3|10|LED,5mm,Green|/assets/led-green.jpg|Standard 5mm green LED for indicators and general-purpose lighting.
+p4|5mm LED - Blue|🔵|Passives|5mm THT|2|3|10|LED,5mm,Blue|/assets/led-blue.jpg|Standard 5mm blue LED for indicators and general-purpose lighting.
+p5|MG90S Micro Servo|⚙️|Modules|Servo Motor|3|65|1|Servo,MG90S,Actuator|/assets/mg90s-servo.jpg|Metal-gear micro servo motor for robotics and small mechanical projects.
+p6|Breadboard|🟩|Tools & Supplies|830-Tie|0|90|3|Breadboard,Prototyping|/assets/breadboard.jpg|Solderless breadboard for prototyping circuits.
+p7|LCD1602 Display (Blue Screen)|🖥️|Modules|16x2 Module|16|90|1|LCD,16x2,Display|/assets/lcd1602-blue.jpg|16x2 character LCD with blue backlight for text output.
+p8|Arduino Uno (ATmega328P)|🧠|Microcontrollers|Arduino Board|20|290|1|Arduino,ATmega328P,Board|/assets/arduino-uno.jpg|Arduino Uno development board built on the ATmega328P microcontroller.
+p9|18650 Battery Holder|🔋|Power|Battery Holder|2|30|1|Battery Holder,18650|/assets/battery-holder-18650.jpg|Single-cell holder for 18650 lithium-ion batteries.
+p10|Active Buzzer|🔊|Modules|Active Buzzer|2|10|4|Buzzer,Alarm,Sound|/assets/buzzer.jpg|Active buzzer module for simple alarms and audio feedback.
+p11|10K 3-Pin Potentiometer|🎚️|Passives|3-Pin THT|3|20|5|Potentiometer,10K,Variable Resistor|/assets/potentiometer-10k.jpg|10K ohm rotary potentiometer for adjustable analog input.
+p12|MAX7219 Dot Matrix Module|🔢|Modules|8x8 Module|5|60|2|MAX7219,Dot Matrix,Display|/assets/max7219-dot-matrix.jpg|8x8 LED dot matrix display driven by a MAX7219 controller.
+p13|4x4 Membrane Keypad|🔢|Modules|Membrane Keypad|8|40|1|Keypad,4x4,Input|/assets/keypad-4x4.jpg|16-button membrane keypad for numeric and command input.
+p14|Male-to-Female Jumper Wires (20cm)|🔌|Tools & Supplies|20cm M-F|0|60|1|Jumper Wire,M-F,20cm|/assets/jumper-wire-mf-20cm.jpg|Male-to-female jumper wire pack, 20cm length, for breadboard wiring.
+p15|Single Row Male Header Pins (10pcs)|📌|Tools & Supplies|10-Pin Strip|10|10|5|Header Pins,Male,Single Row|/assets/header-pins-single-row.jpg|Breakable single-row male header pin strips, 10 pieces per pack.
+p16|Arduino Uno Cable (30cm)|🔌|Tools & Supplies|USB-B to USB-A 30cm|0|50|2|Arduino,USB Cable,30cm|/assets/arduino-cable-30cm.jpg|USB cable for connecting an Arduino Uno to a computer.
+p17|Stepper Motor with Driver Module|⚙️|Modules|28BYJ-48 + ULN2003|5|90|1|Stepper Motor,28BYJ-48,ULN2003|/assets/stepper-motor-module.jpg|28BYJ-48 stepper motor bundled with its ULN2003 driver module.
+p18|Storage Box|📦|Tools & Supplies|Plastic Box|0|150|1|Storage,Organizer|/assets/storage-box.jpg|Plastic storage box for organizing small electronic components.
+p19|5528 LDR Photoresistor|💡|Sensors|5528 THT|2|3|39|LDR,Photoresistor,Light Sensor|/assets/ldr-5528.jpg|Light-dependent resistor for basic light-sensing circuits.
+p20|8x12cm PCB (Double-Sided)|🟫|Tools & Supplies|8x12cm Prototype|0|50|3|PCB,Double-Sided,Prototyping|/assets/pcb-8x12-double-sided.jpg|Double-sided prototyping PCB board, 8x12cm.
+p21|2N3904 NPN Transistor|🔺|Semiconductors|TO-92|3|3|47|Transistor,NPN,2N3904|/assets/transistor-2n3904.jpg|General-purpose NPN transistor for switching and amplification.
+p22|7-Segment Display 5611AS (Common Cathode)|🔟|Displays|0.56in Single Digit|10|15|8|7-Segment,Common Cathode,5611AS|/assets/7-segment-common-cathode.jpg|Single-digit 7-segment display, common cathode configuration.
+p23|7-Segment Display 5611BS (Common Anode)|🔟|Displays|0.56in Single Digit|10|15|7|7-Segment,Common Anode,5611BS|/assets/7-segment-common-anode.jpg|Single-digit 7-segment display, common anode configuration.
+p24|Infrared Remote Control Kit|📡|Modules|IR Receiver + Remote|3|50|1|Infrared,Remote,IR Receiver|/assets/ir-remote-kit.jpg|IR receiver module with matching remote control for wireless input.
+p25|18650 Lithium-Ion Battery|🔋|Power|Li-ion Cell|2|120|3|Battery,18650,Li-ion|/assets/battery-18650.jpg|Rechargeable 18650 lithium-ion cell for portable power projects.
+p26|1N4007 Rectifier Diode|➡️|Semiconductors|DO-41|2|4|10|Diode,1N4007,Rectifier|/assets/diode-1n4007.jpg|General-purpose rectifier diode, 1000V reverse voltage, 1A forward current.
 
