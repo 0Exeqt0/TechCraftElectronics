@@ -1,0 +1,3239 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TechCraft Electronics — Shop</title>
+<style>
+/* =========================================================
+   EXE QT — Portfolio Stylesheet
+   ========================================================= */
+
+:root{
+  /* Primary */
+  --navy-900:#0B1F33;
+  --navy-800:#0F2E46;
+  --navy-700:#123B5A;
+  --hover-bg:#1E4469;
+  --teal-500:#00E5FF;
+  --teal-600:#00B8D9;
+  --teal-300:#4EE6FF;
+
+  /* Accents */
+  --cyan-400:#2DD3EE;
+  --cyan-300:#67E8F9;
+  --indigo-400:#6366F1;
+  --indigo-300:#818CF8;
+  --emerald-400:#10B981;
+  --amber-400:#F59E0B;
+
+  /* Neutrals */
+  --slate-900:#0F172A;
+  --slate-700:#334155;
+  --slate-500:#64748B;
+  --slate-300:#CBD5E1;
+  --slate-200:#E2E8F0;
+  --slate-100:#F1F5F9;
+  --white:#FFFFFF;
+
+  /* Gradients */
+  --grad-primary:linear-gradient(120deg,#0F2E46,#00E5FF);
+  --grad-accent:linear-gradient(120deg,#6366F1,#22D3EE);
+
+  /* Theme tokens */
+  --bg:var(--white);
+  --bg-alt:var(--slate-100);
+  --surface:var(--white);
+  --surface-border:var(--slate-200);
+  --text-heading:var(--navy-900);
+  --text-body:var(--slate-700);
+  --text-muted:var(--slate-500);
+  --nav-bg:rgba(255,255,255,.9);
+  --nav-default:var(--slate-500);
+  --chip-bg:var(--slate-100);
+  --chip-border:var(--slate-300);
+  --shadow:0 10px 28px rgba(11,31,51,.10);
+
+  --radius-btn:24px;
+  --radius-card:16px;
+
+  /* Normal site width */
+  --maxw:1200px;
+}
+
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+[data-theme="dark"]{
+  --bg:var(--navy-900);
+  --bg-alt:var(--navy-800);
+  --surface:var(--navy-700);
+  --surface-border:var(--hover-bg);
+  --text-heading:var(--slate-100);
+  --text-body:var(--slate-300);
+  --text-muted:#94A3B8;
+  --nav-bg:rgba(11,31,51,.85);
+  --nav-default:var(--slate-300);
+  --chip-bg:var(--navy-800);
+  --chip-border:var(--hover-bg);
+  --shadow:0 8px 24px rgba(0,0,0,.35);
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:"Inter","Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text-body);
+  transition:background .25s ease,color .25s ease;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+h1,h2,h3,h4{
+  color:var(--text-heading);
+  margin:0 0 .5em;
+  line-height:1.2;
+  font-weight:700;
+}
+
+p{
+  margin:0 0 1em;
+  line-height:1.65;
+}
+
+ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
+
+
+/* =========================================================
+   STANDARD CONTENT CONTAINER
+   ========================================================= */
+
+.wrap{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 32px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.eyebrow{
+  display:inline-block;
+  font-size:.8rem;
+  font-weight:600;
+  color:var(--teal-600);
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  padding:6px 14px;
+  border-radius:24px;
+  margin-bottom:14px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 22px;
+  border-radius:var(--radius-btn);
+  font-weight:600;
+  font-size:.95rem;
+  border:1px solid transparent;
+  transition:
+    transform .15s ease,
+    background .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+.btn-primary{
+  background:var(--teal-500);
+  color:var(--navy-900);
+}
+
+.btn-primary:hover{
+  background:var(--teal-600);
+}
+
+.btn-secondary{
+  background:transparent;
+  border-color:var(--teal-500);
+  color:var(--teal-500);
+}
+
+.btn-secondary:hover{
+  background:var(--teal-500);
+  color:var(--navy-900);
+}
+
+
+/* =========================================================
+   HEADER / NAVIGATION
+   ========================================================= */
+
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:var(--nav-bg);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--surface-border);
+}
+
+.nav{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:16px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.brand-mark{
+  width:34px;
+  height:34px;
+  border-radius:9px;
+  background:var(--grad-primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--white);
+  font-weight:800;
+  font-size:.85rem;
+}
+
+.brand-text .name{
+  font-weight:700;
+  color:var(--text-heading);
+  font-size:1rem;
+  letter-spacing:.02em;
+}
+
+.brand-text .role{
+  font-size:.72rem;
+  color:var(--text-muted);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.nav-links a{
+  font-size:.92rem;
+  color:var(--nav-default);
+  padding-bottom:4px;
+  border-bottom:2px solid transparent;
+  transition:color .2s ease,border-color .2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--teal-500);
+}
+
+.nav-links a.active{
+  border-bottom-color:var(--teal-500);
+}
+
+.theme-toggle{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid var(--surface-border);
+  background:var(--surface);
+  color:var(--text-heading);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .2s ease;
+}
+
+.theme-toggle:hover{
+  background:var(--chip-bg);
+}
+
+.nav-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:var(--text-heading);
+}
+
+.icon{
+  width:20px;
+  height:20px;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  flex-shrink:0;
+}
+
+.icon-sm{
+  width:16px;
+  height:16px;
+}
+
+.icon-lg{
+  width:26px;
+  height:26px;
+}
+
+section[id]{
+  scroll-margin-top:88px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero{
+  padding:clamp(65px,7vw,105px) 0 70px;
+  background:var(--bg);
+  overflow:hidden;
+}
+
+
+/*
+  IMPORTANT:
+  The normal .wrap remains 1200px.
+
+  Only the HERO gets a wider container.
+*/
+.hero > .wrap{
+  width:min(94%,1700px);
+  max-width:1700px;
+  margin:0 auto;
+  padding:0;
+}
+
+
+.hero-grid{
+  display:grid;
+
+  /*
+    More space for the graphic.
+  */
+  grid-template-columns:
+    minmax(450px,.85fr)
+    minmax(600px,1.15fr);
+
+  gap:clamp(40px,5vw,90px);
+  align-items:center;
+}
+
+
+/* ---------- Hero Heading ---------- */
+
+.hero h1{
+  font-size:clamp(2.8rem,4vw,4.6rem);
+  line-height:1.04;
+  letter-spacing:-.045em;
+  margin:0 0 22px;
+}
+
+
+/* ---------- Hero Subtitle ---------- */
+
+.hero .lede{
+  font-size:clamp(1rem,1.15vw,1.3rem);
+  color:var(--teal-600);
+  font-weight:600;
+  margin-bottom:12px;
+}
+
+
+/* ---------- Hero Description ---------- */
+
+.hero .desc{
+  max-width:62ch;
+  color:var(--text-body);
+  font-size:clamp(1rem,1.05vw,1.15rem);
+  line-height:1.75;
+}
+
+
+/* ---------- Hero Buttons ---------- */
+
+.hero-actions{
+  display:flex;
+  gap:14px;
+  margin:28px 0 20px;
+  flex-wrap:wrap;
+}
+
+.hero-actions .btn{
+  padding:13px 22px;
+  font-size:1rem;
+}
+
+
+/* ---------- Hero Tags ---------- */
+
+.tag-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  font-size:.78rem;
+  color:var(--text-body);
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  padding:6px 12px;
+  border-radius:24px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
+
+.hero-visual{
+  width:100%;
+  min-height:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+
+  /*
+    IMPORTANT:
+    Do NOT hide transparent image overflow.
+  */
+  overflow:visible;
+
+  border:none;
+  border-radius:0;
+
+  background:transparent;
+  padding:0;
+}
+
+
+/*
+  Your transparent showcase image.
+
+  It will automatically scale with
+  the available hero column.
+*/
+.hero-visual img{
+  display:block;
+  width:100%;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width:1500px){
+
+  .hero > .wrap{
+    width:min(94%,1750px);
+    max-width:1750px;
+  }
+
+  .hero-grid{
+    grid-template-columns:
+      minmax(500px,.82fr)
+      minmax(700px,1.18fr);
+
+    gap:70px;
+  }
+
+  .hero h1{
+    font-size:clamp(3.5rem,4vw,4.8rem);
+  }
+}
+
+
+/* =========================================================
+   VERY LARGE SCREENS
+   ========================================================= */
+
+@media (min-width:1800px){
+
+  .hero > .wrap{
+    width:min(92%,1800px);
+    max-width:1800px;
+  }
+
+  .hero-grid{
+    grid-template-columns:
+      minmax(540px,.8fr)
+      minmax(760px,1.2fr);
+
+    gap:80px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+
+    background:var(--bg);
+    border-bottom:1px solid var(--surface-border);
+
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0;
+
+    max-height:0;
+    overflow:hidden;
+
+    transition:max-height .25s ease;
+  }
+
+  .nav-links.open{
+    max-height:400px;
+    padding:8px 32px 18px;
+  }
+
+  .nav-links a{
+    width:100%;
+    padding:12px 0;
+    border-bottom:1px solid var(--surface-border);
+  }
+
+  .nav-toggle{
+    display:block;
+  }
+
+
+  /* ---------- Hero Tablet ---------- */
+
+  .hero{
+    padding:60px 0;
+  }
+
+  .hero > .wrap{
+    width:100%;
+    max-width:none;
+    padding:0 32px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .hero-visual{
+    order:-1;
+    min-height:auto;
+  }
+
+  .hero-visual img{
+    width:100%;
+    max-width:750px;
+    margin:0 auto;
+  }
+
+  .hero h1{
+    font-size:clamp(2.5rem,7vw,3.7rem);
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media(max-width:600px){
+
+  .hero{
+    padding:45px 0 55px;
+  }
+
+  .hero > .wrap{
+    padding:0 20px;
+  }
+
+  .hero-grid{
+    gap:28px;
+  }
+
+  .hero-visual img{
+    width:100%;
+  }
+
+  .hero h1{
+    font-size:clamp(2.15rem,10vw,3rem);
+    line-height:1.08;
+    letter-spacing:-.035em;
+  }
+
+  .hero .lede{
+    font-size:1rem;
+  }
+
+  .hero .desc{
+    font-size:.95rem;
+    line-height:1.65;
+  }
+
+  .hero-actions{
+    width:100%;
+  }
+
+  .hero-actions .btn{
+    flex:1 1 auto;
+    justify-content:center;
+  }
+
+  .hero .tag-row{
+    gap:7px;
+  }
+
+  .hero .tag{
+    font-size:.72rem;
+    padding:6px 10px;
+  }
+}
+
+
+/* =========================================================
+   SECTION SHELL
+   ========================================================= */
+
+section{
+  padding:64px 0;
+}
+
+.section-alt{
+  background:var(--bg-alt);
+}
+
+.section-head{
+  max-width:640px;
+  margin-bottom:40px;
+}
+
+.section-head p{
+  color:var(--text-muted);
+}
+
+
+/* =========================================================
+   CARDS / GRID
+   ========================================================= */
+
+.grid{
+  display:grid;
+  gap:24px;
+}
+
+.grid-3{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.grid-2{
+  grid-template-columns:repeat(2,1fr);
+}
+
+@media(max-width:900px){
+
+  .grid-3,
+  .grid-2{
+    grid-template-columns:1fr;
+  }
+
+  .about-hero{
+    grid-template-columns:1fr;
+  }
+
+  .avatar-frame{
+    max-width:280px;
+    margin:0 auto;
+  }
+}
+
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--surface-border);
+  border-radius:var(--radius-card);
+  padding:22px;
+  box-shadow:none;
+  transition:
+    border-color .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.card:hover{
+  border-color:var(--teal-600);
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
+
+.project-card .thumb{
+  height:150px;
+  border-radius:12px;
+  background:var(--bg-alt);
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.project-card h4{
+  font-size:1.02rem;
+}
+
+.project-card .meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:10px 0 12px;
+}
+
+.chip{
+  font-size:.7rem;
+  color:var(--text-muted);
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  padding:4px 9px;
+  border-radius:20px;
+}
+
+.view-link{
+  color:var(--teal-600);
+  font-size:.85rem;
+  font-weight:600;
+}
+
+
+/* =========================================================
+   FILTER
+   ========================================================= */
+
+.filter-row{
+  display:flex;
+  gap:10px;
+  margin-bottom:28px;
+  flex-wrap:wrap;
+}
+
+.filter-btn{
+  padding:8px 16px;
+  border-radius:20px;
+  border:1px solid var(--chip-border);
+  background:var(--chip-bg);
+  color:var(--text-body);
+  font-size:.85rem;
+  font-weight:600;
+}
+
+.filter-btn.active{
+  background:var(--teal-500);
+  color:var(--navy-900);
+  border-color:var(--teal-500);
+}
+
+
+/* =========================================================
+   SERVICES / SKILLS
+   ========================================================= */
+
+.icon-badge{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:14px;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+}
+
+.icon-badge .icon{
+  stroke:var(--teal-600);
+}
+
+.badge-indigo{
+  background:rgba(99,102,241,.10);
+  border-color:rgba(99,102,241,.25);
+}
+
+.badge-indigo .icon{
+  stroke:var(--indigo-400);
+}
+
+.badge-teal{
+  background:rgba(0,184,217,.10);
+  border-color:rgba(0,184,217,.25);
+}
+
+.badge-teal .icon{
+  stroke:var(--teal-600);
+}
+
+.badge-cyan{
+  background:rgba(45,211,238,.10);
+  border-color:rgba(45,211,238,.25);
+}
+
+.badge-cyan .icon{
+  stroke:var(--cyan-400);
+}
+
+.badge-emerald{
+  background:rgba(16,185,129,.10);
+  border-color:rgba(16,185,129,.25);
+}
+
+.badge-emerald .icon{
+  stroke:var(--emerald-400);
+}
+
+.badge-amber{
+  background:rgba(245,158,11,.10);
+  border-color:rgba(245,158,11,.25);
+}
+
+.badge-amber .icon{
+  stroke:var(--amber-400);
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-block{
+  max-width:520px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.contact-links{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  margin-top:26px;
+  flex-wrap:wrap;
+}
+
+.contact-links .btn .icon{
+  stroke:currentColor;
+}
+
+
+/* =========================================================
+   ABOUT PREVIEW
+   ========================================================= */
+
+.split-3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:32px;
+}
+
+@media(max-width:900px){
+  .split-3{
+    grid-template-columns:1fr;
+  }
+}
+
+.check-list li{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  margin-bottom:10px;
+  color:var(--text-body);
+  font-size:.92rem;
+}
+
+.check-list .dot{
+  color:var(--emerald-400);
+  font-weight:700;
+}
+
+.callout{
+  background:var(--surface);
+  border:1px solid var(--surface-border);
+  border-radius:14px;
+  padding:20px;
+  margin-top:18px;
+}
+
+
+/* =========================================================
+   SOCIAL
+   ========================================================= */
+
+.social-row{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+}
+
+.social-row a{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  border:1px solid var(--surface-border);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--surface);
+}
+
+.social-row a:hover{
+  border-color:var(--teal-600);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer{
+  border-top:1px solid var(--surface-border);
+  padding:26px 0;
+}
+
+.footer-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.footer-row .tagline{
+  color:var(--text-muted);
+  font-size:.85rem;
+}
+
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+.about-hero{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:56px;
+  align-items:center;
+}
+
+.avatar-frame{
+  border:1px solid var(--surface-border);
+  border-radius:18px;
+  padding:18px;
+  background:var(--bg-alt);
+  text-align:center;
+}
+
+.avatar-frame img{
+  border-radius:12px;
+  margin-bottom:14px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+}
+
+.avatar-frame .who{
+  font-weight:700;
+  color:var(--text-heading);
+  font-family:"Courier New",monospace;
+}
+
+.avatar-frame .role{
+  color:var(--text-muted);
+  font-size:.9rem;
+  margin-top:4px;
+}
+
+.avatar-frame .social-row{
+  justify-content:center;
+}
+
+.about-copy .kicker{
+  color:var(--teal-600);
+  font-family:"Courier New",monospace;
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:.03em;
+}
+
+.about-copy h1{
+  margin-top:8px;
+}
+
+.about-copy h1 span{
+  color:var(--teal-600);
+}
+
+.side-note{
+  border-left:2px solid var(--teal-500);
+  padding-left:16px;
+  color:var(--text-body);
+  font-size:.95rem;
+  max-width:22ch;
+}
+
+
+/* =========================================================
+   SKILLS PAGE
+   ========================================================= */
+
+.skill-card ul{
+  margin-top:10px;
+}
+
+.skill-card li{
+  position:relative;
+  padding-left:16px;
+  margin-bottom:8px;
+  color:var(--text-body);
+  font-size:.92rem;
+}
+
+.skill-card li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:9px;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--teal-500);
+}
+
+/* =========================================================
+   SHOP — PAGE HERO (compact)
+   ========================================================= */
+
+.shop-hero{
+  padding:clamp(40px,5vw,60px) 0 8px;
+}
+
+.shop-hero h1{
+  font-size:clamp(2rem,3vw,2.7rem);
+}
+
+.shop-hero .desc{
+  max-width:60ch;
+}
+
+
+/* =========================================================
+   VIEW ROUTING
+   ========================================================= */
+
+.view{
+  animation:fadeIn .2s ease;
+}
+
+.view[hidden]{
+  display:none;
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+
+/* =========================================================
+   TOOLBAR — SEARCH
+   ========================================================= */
+
+.toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
+}
+
+.search-box{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--surface);
+  border:1px solid var(--surface-border);
+  border-radius:24px;
+  padding:9px 16px;
+  min-width:240px;
+  flex:1 1 260px;
+  max-width:360px;
+}
+
+.search-box .icon{
+  stroke:var(--text-muted);
+  flex-shrink:0;
+}
+
+.search-box input{
+  border:none;
+  outline:none;
+  background:none;
+  color:var(--text-body);
+  font-size:.9rem;
+  width:100%;
+  font-family:inherit;
+}
+
+.search-box input::placeholder{
+  color:var(--text-muted);
+}
+
+.result-count{
+  color:var(--text-muted);
+  font-size:.85rem;
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+.product-card{
+  display:flex;
+  flex-direction:column;
+}
+
+.product-card .thumb{
+  height:128px;
+  border-radius:12px;
+  background:var(--bg-alt);
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.6rem;
+  position:relative;
+  overflow:hidden;
+}
+
+.thumb img.product-photo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:inherit;
+  display:block;
+}
+
+.product-card .stock-flag{
+  position:absolute;
+  top:8px;
+  right:8px;
+  font-size:.65rem;
+  font-weight:700;
+  padding:3px 9px;
+  border-radius:20px;
+  background:rgba(245,158,11,.14);
+  color:var(--amber-400);
+  border:1px solid rgba(245,158,11,.3);
+}
+
+.product-card .cat-eyebrow{
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  color:var(--teal-600);
+  margin-bottom:6px;
+}
+
+.product-card h4{
+  font-size:1rem;
+  margin-bottom:6px;
+}
+
+.product-card .desc{
+  color:var(--text-muted);
+  font-size:.85rem;
+  line-height:1.55;
+  margin-bottom:12px;
+  flex-grow:1;
+}
+
+.product-card .tag-row{
+  margin-bottom:14px;
+}
+
+.product-card .price-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+
+.product-card .price{
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--text-heading);
+}
+
+.product-card .price small{
+  font-size:.7rem;
+  font-weight:600;
+  color:var(--text-muted);
+}
+
+.qty-stepper{
+  display:flex;
+  align-items:center;
+  gap:0;
+  border:1px solid var(--chip-border);
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.qty-stepper button{
+  width:28px;
+  height:28px;
+  border:none;
+  background:var(--chip-bg);
+  color:var(--text-heading);
+  font-size:1rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.qty-stepper button:hover{
+  background:var(--teal-500);
+  color:var(--navy-900);
+}
+
+.qty-stepper span{
+  width:26px;
+  text-align:center;
+  font-size:.85rem;
+  font-weight:600;
+  color:var(--text-heading);
+}
+
+.product-card .add-btn{
+  width:100%;
+  justify-content:center;
+}
+
+.product-card .add-btn.in-cart{
+  background:var(--emerald-400);
+  color:var(--white);
+}
+
+.empty-state{
+  grid-column:1/-1;
+  text-align:center;
+  padding:60px 20px;
+  color:var(--text-muted);
+}
+
+.empty-state .icon-lg{
+  stroke:var(--text-muted);
+  margin:0 auto 14px;
+}
+
+
+/* =========================================================
+   CART BUTTON + BADGE
+   ========================================================= */
+
+.cart-btn{
+  position:relative;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid var(--surface-border);
+  background:var(--surface);
+  color:var(--text-heading);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.cart-btn:hover{
+  background:var(--chip-bg);
+}
+
+.cart-badge{
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  min-width:17px;
+  height:17px;
+  padding:0 4px;
+  border-radius:20px;
+  background:var(--teal-500);
+  color:var(--navy-900);
+  font-size:.65rem;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.cart-badge[hidden]{
+  display:none;
+}
+
+
+/* =========================================================
+   CART DRAWER
+   ========================================================= */
+
+.drawer-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(11,31,51,.5);
+  backdrop-filter:blur(2px);
+  z-index:90;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease;
+}
+
+.drawer-overlay.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.cart-drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  width:min(400px,92vw);
+  background:var(--surface);
+  border-left:1px solid var(--surface-border);
+  z-index:91;
+  display:flex;
+  flex-direction:column;
+  transform:translateX(100%);
+  transition:transform .25s ease;
+}
+
+.cart-drawer.open{
+  transform:translateX(0);
+}
+
+.drawer-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 22px;
+  border-bottom:1px solid var(--surface-border);
+}
+
+.drawer-head h3{
+  margin:0;
+  font-size:1.1rem;
+}
+
+.drawer-close{
+  background:none;
+  border:none;
+  color:var(--text-heading);
+  padding:4px;
+}
+
+.drawer-body{
+  flex:1;
+  overflow-y:auto;
+  padding:16px 22px;
+}
+
+.cart-item{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding:14px 0;
+  border-bottom:1px solid var(--surface-border);
+}
+
+.cart-item .thumb{
+  width:52px;
+  height:52px;
+  border-radius:10px;
+  background:var(--bg-alt);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.4rem;
+  flex-shrink:0;
+}
+
+.cart-item .info{
+  flex:1;
+  min-width:0;
+}
+
+.cart-item .info h5{
+  margin:0 0 3px;
+  font-size:.92rem;
+  color:var(--text-heading);
+  font-weight:700;
+}
+
+.cart-item .info .unit-price{
+  font-size:.78rem;
+  color:var(--text-muted);
+  margin-bottom:8px;
+}
+
+.cart-item .row-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.cart-item .remove-btn{
+  background:none;
+  border:none;
+  color:var(--text-muted);
+}
+
+.cart-item .remove-btn:hover{
+  color:var(--amber-400);
+}
+
+.cart-item .line-total{
+  font-size:.9rem;
+  font-weight:700;
+  color:var(--text-heading);
+  white-space:nowrap;
+}
+
+.cart-empty{
+  text-align:center;
+  padding:50px 10px;
+  color:var(--text-muted);
+}
+
+.cart-empty .icon-lg{
+  stroke:var(--text-muted);
+  margin:0 auto 12px;
+}
+
+.drawer-foot{
+  border-top:1px solid var(--surface-border);
+  padding:18px 22px 22px;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:.9rem;
+  color:var(--text-body);
+  margin-bottom:8px;
+}
+
+.summary-row.total{
+  font-size:1.05rem;
+  font-weight:700;
+  color:var(--text-heading);
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px dashed var(--surface-border);
+}
+
+.drawer-foot .btn{
+  width:100%;
+  justify-content:center;
+  margin-top:12px;
+}
+
+
+/* =========================================================
+   MODALS
+   ========================================================= */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(11,31,51,.55);
+  backdrop-filter:blur(2px);
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease;
+}
+
+.modal-overlay.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.modal{
+  background:var(--surface);
+  border:1px solid var(--surface-border);
+  border-radius:var(--radius-card);
+  width:100%;
+  max-width:440px;
+  max-height:88vh;
+  overflow-y:auto;
+  padding:26px;
+  box-shadow:var(--shadow);
+  transform:translateY(10px);
+  transition:transform .2s ease;
+}
+
+.modal-overlay.open .modal{
+  transform:translateY(0);
+}
+
+.modal.modal-wide{
+  max-width:640px;
+}
+
+.modal-close-row{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:-6px;
+}
+
+.modal-close-row button{
+  background:none;
+  border:none;
+  color:var(--text-muted);
+  padding:4px;
+}
+
+.modal h3{
+  font-size:1.2rem;
+  margin-bottom:6px;
+}
+
+.modal .sub{
+  color:var(--text-muted);
+  font-size:.88rem;
+  margin-bottom:18px;
+}
+
+.field{
+  margin-bottom:14px;
+}
+
+.field label{
+  display:block;
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--text-heading);
+  margin-bottom:6px;
+}
+
+.field input,
+.field textarea,
+.field select{
+  width:100%;
+  padding:10px 13px;
+  border-radius:10px;
+  border:1px solid var(--chip-border);
+  background:var(--bg-alt);
+  color:var(--text-body);
+  font-size:.9rem;
+  font-family:inherit;
+  outline:none;
+  transition:border-color .15s ease;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:var(--teal-500);
+}
+
+.field textarea{
+  resize:vertical;
+  min-height:70px;
+}
+
+.field-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.form-error{
+  color:var(--amber-400);
+  font-size:.82rem;
+  margin:-6px 0 12px;
+  min-height:0;
+}
+
+.form-error:empty{
+  display:none;
+}
+
+.modal .btn{
+  width:100%;
+  justify-content:center;
+}
+
+.order-code-display{
+  text-align:center;
+  padding:22px 16px;
+  background:var(--bg-alt);
+  border:1px dashed var(--teal-500);
+  border-radius:14px;
+  margin:16px 0 20px;
+}
+
+.order-code-display .label{
+  font-size:.75rem;
+  color:var(--text-muted);
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+.order-code-display .code{
+  font-family:"Courier New",monospace;
+  font-size:1.6rem;
+  font-weight:800;
+  color:var(--teal-600);
+  letter-spacing:.06em;
+}
+
+.copy-row{
+  display:flex;
+  gap:10px;
+}
+
+.copy-row .btn{
+  flex:1;
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast-stack{
+  position:fixed;
+  bottom:22px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:200;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  align-items:center;
+}
+
+.toast{
+  background:var(--navy-900);
+  color:var(--white);
+  padding:11px 20px;
+  border-radius:24px;
+  font-size:.85rem;
+  font-weight:600;
+  box-shadow:var(--shadow);
+  animation:toastIn .2s ease;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+[data-theme="dark"] .toast{
+  background:var(--teal-500);
+  color:var(--navy-900);
+}
+
+@keyframes toastIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+
+/* =========================================================
+   ADMIN LOGIN
+   ========================================================= */
+
+.admin-login-wrap{
+  max-width:380px;
+  margin:30px auto;
+}
+
+.admin-login-wrap .card{
+  padding:32px 28px;
+}
+
+.admin-login-wrap .icon-badge{
+  margin:0 auto 16px;
+}
+
+.admin-login-wrap h2{
+  text-align:center;
+  font-size:1.3rem;
+}
+
+.admin-login-wrap .sub{
+  text-align:center;
+  color:var(--text-muted);
+  font-size:.88rem;
+  margin-bottom:22px;
+}
+
+.admin-hint{
+  margin-top:16px;
+  font-size:.76rem;
+  color:var(--text-muted);
+  text-align:center;
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD
+   ========================================================= */
+
+.admin-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-bottom:24px;
+}
+
+.admin-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.admin-tab{
+  padding:9px 18px;
+  border-radius:20px;
+  border:1px solid var(--chip-border);
+  background:var(--chip-bg);
+  color:var(--text-body);
+  font-size:.86rem;
+  font-weight:600;
+}
+
+.admin-tab.active{
+  background:var(--indigo-400);
+  color:var(--white);
+  border-color:var(--indigo-400);
+}
+
+.admin-panel{
+  display:none;
+}
+
+.admin-panel.active{
+  display:block;
+}
+
+.stat-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:28px;
+}
+
+@media(max-width:800px){
+  .stat-row{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+.stat-card{
+  padding:18px;
+}
+
+.stat-card .num{
+  font-size:1.7rem;
+  font-weight:800;
+  color:var(--text-heading);
+}
+
+.stat-card .lbl{
+  font-size:.78rem;
+  color:var(--text-muted);
+  font-weight:600;
+}
+
+.decode-box{
+  display:flex;
+  gap:10px;
+  margin-bottom:22px;
+  flex-wrap:wrap;
+}
+
+.decode-box input{
+  flex:1;
+  min-width:200px;
+}
+
+.data-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.86rem;
+}
+
+.data-table th{
+  text-align:left;
+  color:var(--text-muted);
+  font-weight:600;
+  font-size:.76rem;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  padding:10px 12px;
+  border-bottom:1px solid var(--surface-border);
+  white-space:nowrap;
+}
+
+.data-table td{
+  padding:12px;
+  border-bottom:1px solid var(--surface-border);
+  color:var(--text-body);
+  vertical-align:middle;
+}
+
+.data-table tr:last-child td{
+  border-bottom:none;
+}
+
+.data-table .row-btn{
+  background:none;
+  border:1px solid var(--chip-border);
+  border-radius:8px;
+  padding:6px 12px;
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--text-body);
+}
+
+.data-table .row-btn:hover{
+  border-color:var(--teal-600);
+  color:var(--teal-600);
+}
+
+.data-table .row-btn.danger:hover{
+  border-color:var(--amber-400);
+  color:var(--amber-400);
+}
+
+.table-wrap{
+  overflow-x:auto;
+  border:1px solid var(--surface-border);
+  border-radius:var(--radius-card);
+}
+
+.table-wrap .card{
+  border:none;
+  border-radius:0;
+}
+
+.panel-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:16px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.order-detail{
+  margin-top:20px;
+}
+
+.pack-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border:1px solid var(--surface-border);
+  border-radius:12px;
+  margin-bottom:8px;
+}
+
+.pack-item input[type="checkbox"]{
+  width:19px;
+  height:19px;
+  accent-color:var(--emerald-400);
+  flex-shrink:0;
+}
+
+.pack-item .thumb{
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  background:var(--bg-alt);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.1rem;
+  flex-shrink:0;
+}
+
+.pack-item .info{
+  flex:1;
+}
+
+.pack-item .info .n{
+  font-size:.88rem;
+  font-weight:700;
+  color:var(--text-heading);
+}
+
+.pack-item .info .m{
+  font-size:.76rem;
+  color:var(--text-muted);
+}
+
+.pack-item.checked{
+  border-color:var(--emerald-400);
+  background:rgba(16,185,129,.06);
+}
+
+.pack-item.checked .n{
+  text-decoration:line-through;
+  text-decoration-color:var(--text-muted);
+}
+
+.tag-input-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:6px;
+}
+
+.tag-editable{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  padding:5px 8px 5px 12px;
+  border-radius:20px;
+  font-size:.78rem;
+}
+
+.tag-editable button{
+  background:none;
+  border:none;
+  color:var(--text-muted);
+  display:flex;
+  padding:0;
+}
+
+.text-muted-note{
+  font-size:.8rem;
+  color:var(--text-muted);
+  line-height:1.6;
+}
+
+.logout-btn{
+  color:var(--amber-400);
+  border-color:var(--amber-400);
+}
+
+.logout-btn:hover{
+  background:var(--amber-400);
+  color:var(--white);
+}
+
+
+/* =========================================================
+   WIDE SHOP CONTAINER — fills desktop width instead of
+   leaving large empty margins either side
+   ========================================================= */
+
+.wrap-wide{
+  width:100%;
+  max-width:1680px;
+  margin:0 auto;
+  padding:0 32px;
+}
+
+@media(max-width:600px){
+  .wrap-wide{
+    padding:0 16px;
+  }
+}
+
+/* Shop grid scales up column count as space allows, instead
+   of staying fixed at 3 columns and leaving side gutters
+   empty on wide desktop screens. */
+.grid-shop{
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(2,1fr);
+}
+
+@media(min-width:640px){
+  .grid-shop{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(min-width:1000px){
+  .grid-shop{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+
+@media(min-width:1400px){
+  .grid-shop{
+    grid-template-columns:repeat(5,1fr);
+  }
+}
+
+@media(min-width:1800px){
+  .grid-shop{
+    grid-template-columns:repeat(6,1fr);
+  }
+}
+
+@media(max-width:480px){
+  .grid-shop{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* =========================================================
+   COMPONENT SPEC BADGES (package / pin count)
+   ========================================================= */
+
+.spec-row{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+
+.spec-badge{
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  padding:3px 9px;
+  border-radius:6px;
+  font-family:"Courier New",monospace;
+  background:rgba(99,102,241,.10);
+  color:var(--indigo-400);
+  border:1px solid rgba(99,102,241,.25);
+}
+
+.spec-badge.pins{
+  background:rgba(0,184,217,.10);
+  color:var(--teal-600);
+  border-color:rgba(0,184,217,.25);
+}
+
+
+/* =========================================================
+   MOBILE-FIRST REFINEMENTS
+   ========================================================= */
+
+@media(max-width:600px){
+
+  .nav{
+    padding:12px 16px;
+  }
+
+  .shop-hero .wrap-wide{
+    padding:0 16px;
+  }
+
+  .shop-hero h1{
+    font-size:1.6rem;
+  }
+
+  .shop-hero .desc{
+    font-size:.92rem;
+  }
+
+  section{
+    padding:36px 0;
+  }
+
+  .toolbar{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .search-box{
+    max-width:none;
+    flex:none;
+    width:100%;
+  }
+
+.filter-row{
+  flex-wrap:nowrap;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x proximity;
+  padding:2px 16px 8px 0;
+  margin:0 -16px 0 0;
+  -webkit-mask-image:linear-gradient(to right, #000 90%, transparent 100%);
+  mask-image:linear-gradient(to right, #000 90%, transparent 100%);
+}
+
+.filter-row::-webkit-scrollbar{
+  display:none;
+}
+
+.filter-btn{
+  flex-shrink:0;
+  scroll-snap-align:start;
+}
+
+  .product-card{
+    padding:16px;
+  }
+
+  .product-card .thumb{
+    height:104px;
+    font-size:2.1rem;
+  }
+
+  .btn,
+  .qty-stepper button,
+  .filter-btn,
+  .admin-tab{
+    min-height:40px;
+  }
+
+  .cart-drawer{
+    width:100vw;
+  }
+
+  .modal{
+    padding:20px;
+    max-height:92vh;
+  }
+
+  .field-row{
+    grid-template-columns:1fr;
+  }
+
+  .stat-row{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .admin-topbar{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .decode-box{
+    flex-direction:column;
+  }
+
+  .data-table{
+    font-size:.78rem;
+  }
+
+  .data-table th,
+  .data-table td{
+    padding:8px;
+  }
+}
+
+@media(max-width:380px){
+  .stat-row{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <nav class="nav">
+    <a href="#/shop" class="brand">
+      <div class="brand-mark">EQ</div>
+      <div class="brand-text">
+        <div class="name">TechCraft Electronics</div>
+        <div class="role">Shop · Track · Manage</div>
+      </div>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#/shop" data-route="shop">Shop</a></li>
+      <li><a href="#/admin" data-route="admin">Admin</a></li>
+    </ul>
+
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="cart-btn" id="cartBtn" title="Cart" aria-label="Open cart">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle dark mode">
+        <svg class="icon icon-sm" id="themeIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="app">
+
+  <!-- ============================================================
+       VIEW: SHOP
+       ============================================================ -->
+  <section class="view" id="view-shop">
+    <div class="shop-hero">
+      <div class="wrap-wide">
+        <span class="eyebrow">Component Catalog</span>
+        <h1>Electronic components, in stock</h1>
+        <p class="desc">ICs, microcontrollers, sensors, semiconductors and modules with full package and pinout specs. Add what you need to your cart, check out, and get an order code that tracks your parts and quantities.</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap-wide">
+        <div class="toolbar">
+          <div class="filter-row" id="categoryFilters" style="margin-bottom:0;"></div>
+          <div class="search-box">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="searchInput" placeholder="Search part name, package, tag...">
+          </div>
+        </div>
+        <p class="result-count" id="resultCount"></p>
+        <div class="grid-shop" id="productGrid" style="margin-top:16px;"></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ============================================================
+       VIEW: ADMIN LOGIN
+       ============================================================ -->
+  <section class="view" id="view-admin-login" hidden>
+    <section>
+      <div class="wrap">
+        <div class="admin-login-wrap">
+          <div class="card">
+            <div class="icon-badge badge-indigo" style="width:52px;height:52px;">
+              <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            </div>
+            <h2>Admin Sign In</h2>
+            <p class="sub">Restricted area — order management &amp; catalog control.</p>
+            <div class="field">
+              <label for="adminUser">Username</label>
+              <input type="text" id="adminUser" autocomplete="username">
+            </div>
+            <div class="field">
+              <label for="adminPass">Password</label>
+              <input type="password" id="adminPass" autocomplete="current-password">
+            </div>
+            <div class="form-error" id="adminLoginError"></div>
+            <button class="btn btn-primary" id="adminLoginBtn">Sign In</button>
+            <p class="admin-hint">Credentials are verified against a stored hash — the password is never kept in the page source as plain text. Order codes decode entirely in your browser, with no server or shared database required.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ============================================================
+       VIEW: ADMIN DASHBOARD
+       ============================================================ -->
+  <section class="view" id="view-admin" hidden>
+    <section>
+      <div class="wrap">
+        <div class="admin-topbar">
+          <div>
+            <span class="eyebrow">Admin Dashboard</span>
+            <h1 style="font-size:1.7rem;margin:6px 0 0;">Order Decoder &amp; Catalog</h1>
+          </div>
+          <button class="btn btn-secondary logout-btn" id="adminLogoutBtn">Log Out</button>
+        </div>
+
+        <div class="stat-row">
+          <div class="card stat-card">
+            <div class="num" id="statProducts">0</div>
+            <div class="lbl">Products Listed</div>
+          </div>
+          <div class="card stat-card">
+            <div class="num" id="statCatalogSource" style="font-size:1rem;">products.txt</div>
+            <div class="lbl">Catalog Source</div>
+          </div>
+        </div>
+
+        <div class="admin-tabs">
+          <button class="admin-tab active" data-tab="decode">Decode Order Code</button>
+          <button class="admin-tab" data-tab="products">Products</button>
+        </div>
+
+        <!-- DECODE PANEL -->
+        <div class="admin-panel active" id="panel-decode" style="margin-top:22px;">
+          <h3 style="margin-bottom:6px;">Decode a customer's order code</h3>
+          <p class="text-muted-note" style="margin-bottom:16px;">The code itself carries the ordered items, quantities, locked-in prices and customer details — it decodes on any device, even one that never saw the order placed, because nothing but the code is required. Paste it exactly as given; codes are case-sensitive.</p>
+          <div class="decode-box">
+            <input type="text" id="decodeInput" class="field-like" placeholder="e.g. TCI-eyJ0IjoibDh4MnEzIn0-A1B2" style="padding:10px 13px;border-radius:10px;border:1px solid var(--chip-border);background:var(--bg-alt);color:var(--text-body);font-size:.9rem;">
+            <button class="btn btn-primary" id="decodeBtn">Decode</button>
+          </div>
+          <div class="form-error" id="decodeError"></div>
+          <div id="decodeResult"></div>
+        </div>
+
+        <!-- PRODUCTS PANEL (read-only view of the products.txt catalog) -->
+        <div class="admin-panel" id="panel-products" style="margin-top:22px;">
+          <div class="panel-head">
+            <h3 style="margin:0;">Product Catalog</h3>
+          </div>
+          <p class="text-muted-note" style="margin:-4px 0 16px;">This is a read-only view of the currently loaded catalog. To add, edit, or remove products, edit <code>products.txt</code> and commit/push it — the storefront picks up the change on next load.</p>
+          <div class="table-wrap">
+            <div class="card">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Icon</th><th>Name</th><th>Category</th><th>Package</th><th>Price</th><th>Stock</th><th>Tags</th></tr>
+                </thead>
+                <tbody id="productsTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <span class="tagline">© 2026 EXE QT Electronics. All rights reserved.</span>
+    <span class="tagline">Orders are processed within 1–2 business days.</span>
+  </div>
+</footer>
+
+<!-- ============================================================
+     CART DRAWER
+     ============================================================ -->
+<div class="drawer-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="drawer-head">
+    <h3>Your Cart</h3>
+    <button class="drawer-close" id="cartCloseBtn" aria-label="Close cart">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot" id="cartFoot">
+    <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">₱0.00</span></div>
+    <div class="summary-row total"><span>Total</span><span id="cartTotal">₱0.00</span></div>
+    <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+
+<!-- ============================================================
+     CHECKOUT MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal">
+    <div class="modal-close-row">
+      <button id="checkoutCloseBtn" aria-label="Close">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <h3>Confirm your order</h3>
+    <p class="sub">These details help us reach you if there's an issue with packaging or delivery. Both fields are optional.</p>
+    <div class="field">
+      <label for="custName">Name</label>
+      <input type="text" id="custName" placeholder="Juan Dela Cruz">
+    </div>
+    <div class="field">
+      <label for="custContact">Contact number / email</label>
+      <input type="text" id="custContact" placeholder="09xx xxx xxxx">
+    </div>
+    <button class="btn btn-primary" id="confirmOrderBtn">Place Order</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     ORDER CODE (SUCCESS) MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="successOverlay">
+  <div class="modal">
+    <div class="modal-close-row">
+      <button id="successCloseBtn" aria-label="Close">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div style="text-align:center;">
+      <div class="icon-badge badge-emerald" style="width:52px;height:52px;margin:0 auto 14px;">
+        <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h3>Order placed!</h3>
+      <p class="sub">Save this code — your items, quantities and total are encoded directly inside it, so any of our staff can decode it to see your exact order, on any device.</p>
+    </div>
+    <div class="order-code-display">
+      <div class="label">YOUR ORDER CODE</div>
+      <div class="code" id="successCode" style="font-size:1.05rem;word-break:break-all;line-height:1.4;letter-spacing:normal;">TCI-XXXXXXXX-XXXX</div>
+    </div>
+    <div class="copy-row">
+      <button class="btn btn-secondary" id="copyCodeBtn">Copy Code</button>
+      <button class="btn btn-primary" id="successDoneBtn">Done</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<script>
+/* =============================================================
+   EXE QT ELECTRONICS — APP LOGIC
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   0. CONFIG — ADMIN CREDENTIALS
+   -----------------------------------------------------------
+   The password below is stored only as a SHA-256 hash, never as
+   plain text, so it cannot be read by opening dev tools and
+   viewing this file. To change it: open the browser console on
+   this page and run  await hashText("your-new-password")  then
+   paste the printed hash in place of ADMIN_PASS_HASH below.
+
+   NOTE: this is a client-only site with no server. Hashing keeps
+   the password out of plain sight, but anyone who can edit this
+   file can still change the check. For real deployments, move
+   authentication to a backend/server.
+   ------------------------------------------------------------- */
+const ADMIN_USERNAME   = "admin";
+const ADMIN_PASS_HASH  = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9"; // default password: admin123
+
+async function hashText(text){
+  const enc = new TextEncoder().encode(text);
+  const buf = await crypto.subtle.digest("SHA-256", enc);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,"0")).join("");
+}
+window.hashText = hashText; // exposed so admin can generate a new hash from the console
+
+
+/* -------------------------------------------------------------
+   1. STORAGE HELPERS
+   -----------------------------------------------------------
+   The only thing this app keeps in browser storage is a
+   cosmetic UI preference (light/dark theme). Products, cart,
+   and orders are never written to localStorage/sessionStorage —
+   see project-summary.md for why.
+   ------------------------------------------------------------- */
+const STORE = {
+  theme : "eqt_theme",
+};
+
+function load(key, fallback){
+  try{
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){ return fallback; }
+}
+function save(key, value){
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+
+/* -------------------------------------------------------------
+   2. PRODUCT CATALOG
+   -----------------------------------------------------------
+   The catalog is loaded from the sibling products.txt file at
+   startup (see loadProductsFromFile() / parseProductsTxt() and
+   initApp() near the bottom of this script). FALLBACK_PRODUCTS
+   below is only used if products.txt can't be fetched (e.g. the
+   file is opened directly as file:// instead of served over
+   http, where fetch() of a local file is blocked) — it is never
+   written back to products.txt or to any storage.
+   ------------------------------------------------------------- */
+const FALLBACK_PRODUCTS = [
+  { id:"p1", name:"LM358 Dual Op-Amp", icon:"🔧", category:"ICs",
+    package:"DIP-8", pins:8, price:12, stock:240,
+    desc:"Dual independent, general-purpose operational amplifier. Single-supply operation from 3V to 32V, internally frequency-compensated for unity gain stability.",
+    tags:["Op-Amp","Single Supply","Low Bias Current"] },
+  { id:"p2", name:"NE555 Precision Timer", icon:"⏱️", category:"ICs",
+    package:"DIP-8", pins:8, price:8, stock:310,
+    desc:"Highly stable timer IC for generating accurate time delays or oscillation. Astable or monostable operation, sourcing/sinking up to 200mA.",
+    tags:["Timer","Astable","Monostable"] },
+  { id:"p3", name:"74HC04 Hex Inverter", icon:"🔀", category:"ICs",
+    package:"SOP-14", pins:14, price:9, stock:180,
+    desc:"High-speed CMOS hex inverter with Schmitt-trigger inputs. Buffered outputs, 2V–6V supply range, fan-out of 10 LS-TTL loads.",
+    tags:["Logic Gate","CMOS","Schmitt Trigger"] },
+  { id:"p4", name:"ATmega328P Microcontroller", icon:"🧠", category:"Microcontrollers",
+    package:"DIP-28", pins:28, price:145, stock:60,
+    desc:"8-bit AVR RISC-based microcontroller, 32KB flash, 2KB SRAM, 23 GPIO lines. Runs at up to 20MHz, used in Arduino UNO boards.",
+    tags:["AVR","32KB Flash","20MHz"] },
+  { id:"p5", name:"ESP32-WROOM-32 Module", icon:"📡", category:"Modules",
+    package:"SMD Module", pins:38, price:295, stock:85,
+    desc:"Dual-core Wi-Fi + Bluetooth LE MCU module. 4MB flash, integrated antenna, 34 programmable GPIOs, ideal for IoT development.",
+    tags:["Wi-Fi","Bluetooth LE","Dual-core"] },
+  { id:"p6", name:"IRF540N Power MOSFET", icon:"⚡", category:"Semiconductors",
+    package:"TO-220", pins:3, price:35, stock:150,
+    desc:"N-channel power MOSFET, 100V VDS, 33A continuous drain current, low RDS(on) of 44mΩ. Common in motor driver and switching circuits.",
+    tags:["N-Channel","100V","33A"] },
+  { id:"p7", name:"LM7805 Voltage Regulator", icon:"🔌", category:"Semiconductors",
+    package:"TO-220", pins:3, price:18, stock:220,
+    desc:"Fixed 5V positive linear voltage regulator, 1.5A output current, internal thermal overload and short-circuit protection.",
+    tags:["5V Fixed","1.5A","Linear"] },
+  { id:"p8", name:"DS18B20 Digital Thermometer", icon:"🌡️", category:"Sensors",
+    package:"TO-92", pins:3, price:65, stock:130,
+    desc:"1-Wire digital temperature sensor, ±0.5°C accuracy from -10°C to +85°C, 9 to 12-bit configurable resolution, unique 64-bit serial code.",
+    tags:["1-Wire","±0.5°C","Waterproof Variant"] },
+  { id:"p9", name:"PC817 Optocoupler", icon:"🔗", category:"ICs",
+    package:"DIP-4", pins:4, price:11, stock:260,
+    desc:"Phototransistor-output optocoupler providing 5000Vrms isolation between input LED and output transistor. Common in signal isolation circuits.",
+    tags:["Isolation","Phototransistor","5000Vrms"] },
+  { id:"p10", name:"HC-05 Bluetooth Module", icon:"📶", category:"Modules",
+    package:"SIP Breakout", pins:6, price:225, stock:70,
+    desc:"Serial Bluetooth 2.0 module with UART interface, master/slave configurable, 10m range, used for wireless serial communication.",
+    tags:["UART","Master/Slave","10m Range"] },
+  { id:"p11", name:"1N4007 Rectifier Diode", icon:"➡️", category:"Semiconductors",
+    package:"DO-41", pins:2, price:2, stock:500,
+    desc:"General-purpose rectifier diode, 1000V reverse voltage, 1A forward current. Widely used in power supply rectification.",
+    tags:["1000V","1A","Rectifier"] },
+  { id:"p12", name:"MPU-6050 IMU Module", icon:"🎯", category:"Sensors",
+    package:"QFN-24 Module", pins:8, price:180, stock:95,
+    desc:"6-axis motion tracking device combining a 3-axis gyroscope and 3-axis accelerometer with I2C digital output.",
+    tags:["I2C","Gyroscope","Accelerometer"] },
+];
+
+// Populated by initApp() from products.txt (or FALLBACK_PRODUCTS).
+let products = [];
+
+// Cart lives only in memory for the current page load — it is
+// intentionally never persisted, so a refresh or a new tab starts
+// with an empty cart (see project-summary.md, "Data and storage
+// rules").
+let cart = []; // [{id, qty}]
+
+/* -------------------------------------------------------------
+   2b. LOADING THE CATALOG FROM products.txt
+   -----------------------------------------------------------
+   Format: one product per non-empty, non-comment ("#") line,
+   pipe-delimited:
+
+     id|name|icon|category|package|pins|price|stock|tag1,tag2|description
+
+   The description is everything after the 9th "|", so it may
+   itself contain commas safely. See products.txt for real
+   examples.
+   ------------------------------------------------------------- */
+function parseProductsTxt(text){
+  return text
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(line => line && !line.startsWith("#"))
+    .map(line => {
+      const parts = line.split("|");
+      const [id, name, icon, category, pkg, pinsRaw, priceRaw, stockRaw, tagsRaw, imageRaw, ...descParts] = parts;
+return {
+  id: (id || "").trim(),
+  name: (name || "").trim(),
+  icon: (icon || "🔌").trim(),
+  category: (category || "").trim(),
+  package: (pkg || "").trim(),
+  pins: parseInt(pinsRaw, 10) || 0,
+  price: parseFloat(priceRaw) || 0,
+  stock: parseInt(stockRaw, 10) || 0,
+  tags: (tagsRaw || "").split(",").map(t => t.trim()).filter(Boolean),
+  image: (imageRaw || "").trim(),
+  desc: descParts.join("|").trim(),
+};
+    })
+    .filter(p => p.id && p.name);
+}
+
+async function loadProductsFromFile(){
+  const res = await fetch("products.txt", { cache: "no-store" });
+  if(!res.ok) throw new Error(`products.txt responded with ${res.status}`);
+  const text = await res.text();
+  const parsed = parseProductsTxt(text);
+  if(parsed.length === 0) throw new Error("products.txt parsed to zero products");
+  return parsed;
+}
+
+
+/* -------------------------------------------------------------
+   3. UTIL
+   ------------------------------------------------------------- */
+function peso(n){
+  return "₱" + Number(n).toLocaleString("en-PH", {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+function byId(id){ return products.find(p => p.id === id); }
+function esc(str){
+  const d = document.createElement("div");
+  d.textContent = str == null ? "" : String(str);
+  return d.innerHTML;
+}
+function toast(msg){
+  const stack = document.getElementById("toastStack");
+  const el = document.createElement("div");
+  el.className = "toast";
+  el.textContent = msg;
+  stack.appendChild(el);
+  setTimeout(() => el.remove(), 2600);
+}
+/* Order codes are self-contained: the product ids, quantities,
+   locked-in prices and customer info are encoded directly into
+   the code (base64url JSON + a checksum), not used as a lookup
+   key into any local or shared database. That means any device —
+   including a fresh browser on the deployed site that has never
+   seen this order before — can decode the code on its own and
+   recover exactly what was ordered and how much of it, with
+   nothing but the code itself.
+
+   There is intentionally no packing/shipping *status* stored
+   anywhere (browser storage or otherwise): the code is the
+   portable record of the order, not a row in an order database.
+*/
+
+function b64urlEncode(str){
+  const utf8 = unescape(encodeURIComponent(str));
+  return btoa(utf8).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+}
+function b64urlDecode(b64url){
+  let b64 = b64url.replace(/-/g,"+").replace(/_/g,"/");
+  while(b64.length % 4) b64 += "=";
+  const utf8 = atob(b64);
+  return decodeURIComponent(escape(utf8));
+}
+// Short, non-cryptographic checksum (FNV-1a) so a mistyped or
+// corrupted code is caught immediately instead of silently
+// decoding into garbage.
+function checksum4(str){
+  let h = 0x811c9dc5;
+  for(let i=0;i<str.length;i++){
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(36).toUpperCase().padStart(4,"0").slice(-4);
+}
+
+function buildOrderCode(items, custName, custContact){
+  const ts36  = Date.now().toString(36);
+  const nonce = Math.random().toString(36).slice(2,4).toUpperCase();
+  const itemsCompact = items.map(i => [i.id, i.qty, i.price]); // [productId, quantity, unitPrice]
+  const payload = [ts36, nonce, custName || "", custContact || "", itemsCompact];
+  const b64 = b64urlEncode(JSON.stringify(payload));
+  return `TCI-${b64}-${checksum4(b64)}`;
+}
+
+// Decodes a code purely from its own contents — no localStorage,
+// sessionStorage, or shared database lookup required. Returns
+// null if the code is malformed or the checksum doesn't match
+// (typo / tampering / not one of ours).
+function decodeOrderCode(rawCode){
+  const code = (rawCode || "").trim();
+  const m = code.match(/^TCI-([A-Za-z0-9_-]+)-([A-Z0-9]{4})$/);
+  if(!m) return null;
+  const [, b64, sum] = m;
+  if(checksum4(b64) !== sum) return null;
+
+  let payload;
+  try{
+    payload = JSON.parse(b64urlDecode(b64));
+  }catch(e){ return null; }
+
+  const [ts36, , custName, custContact, itemsCompact] = payload;
+  if(!Array.isArray(itemsCompact)) return null;
+
+  const items = itemsCompact.map(([id, qty, price]) => {
+    const p = byId(id);
+    return {
+      id, qty, price,
+      name: p ? p.name : `Removed / unknown item (${id})`,
+      icon: p ? p.icon : "❓",
+    };
+  });
+  const total = items.reduce((s,i) => s + i.qty * i.price, 0);
+  const createdAt = new Date(parseInt(ts36, 36)).toISOString();
+
+  return { code, items, total, createdAt, customer:{ name: custName || "", contact: custContact || "" } };
+}
+
+
+/* =================================================================
+   4. ROUTER
+   ================================================================= */
+const views = {
+  shop:  document.getElementById("view-shop"),
+  "admin-login": document.getElementById("view-admin-login"),
+  admin: document.getElementById("view-admin"),
+};
+
+function isAdminAuthed(){
+  return sessionStorage.getItem("eqt_admin_authed") === "1";
+}
+
+function route(){
+  const hash = location.hash.replace("#/", "") || "shop";
+  Object.values(views).forEach(v => v.hidden = true);
+  document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("active"));
+
+  if(hash === "admin"){
+    if(isAdminAuthed()){
+      views.admin.hidden = false;
+      renderAdmin();
+    }else{
+      views["admin-login"].hidden = false;
+    }
+    const link = document.querySelector('.nav-links a[data-route="admin"]');
+    if(link) link.classList.add("active");
+  }else{
+    views.shop.hidden = false;
+    document.querySelector('.nav-links a[data-route="shop"]')?.classList.add("active");
+    renderProducts();
+  }
+
+  document.getElementById("navLinks").classList.remove("open");
+  window.scrollTo({top:0, behavior:"instant"});
+}
+window.addEventListener("hashchange", route);
+
+
+/* =================================================================
+   5. SHOP — PRODUCT GRID
+   ================================================================= */
+let activeCategory = "All";
+let searchTerm = "";
+
+function renderCategoryFilters(){
+  const cats = ["All", ...new Set(products.map(p => p.category))];
+  const wrap = document.getElementById("categoryFilters");
+  wrap.innerHTML = cats.map(c =>
+    `<button class="filter-btn ${c===activeCategory?"active":""}" data-cat="${esc(c)}">${esc(c)}</button>`
+  ).join("");
+  wrap.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      activeCategory = btn.dataset.cat;
+      renderCategoryFilters();
+      renderProducts();
+    });
+  });
+}
+
+function renderProducts(){
+  const grid = document.getElementById("productGrid");
+  const term = searchTerm.trim().toLowerCase();
+
+  const filtered = products.filter(p => {
+    const matchCat = activeCategory === "All" || p.category === activeCategory;
+    const matchSearch = !term ||
+      p.name.toLowerCase().includes(term) ||
+      p.desc.toLowerCase().includes(term) ||
+      p.tags.some(t => t.toLowerCase().includes(term));
+    return matchCat && matchSearch;
+  });
+
+  document.getElementById("resultCount").textContent =
+    `${filtered.length} product${filtered.length===1?"":"s"} found`;
+
+  if(filtered.length === 0){
+    grid.innerHTML = `
+      <div class="empty-state">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" style="margin:0 auto 10px;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        <p>No products match your search.</p>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => {
+    const inCart = cart.find(c => c.id === p.id);
+    const qty = inCart ? inCart.qty : 0;
+    const lowStock = p.stock > 0 && p.stock <= 5;
+    const outOfStock = p.stock <= 0;
+    return `
+    <div class="card product-card" data-id="${p.id}">
+      <div class="thumb">
+  ${p.image ? `<img class="product-photo" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">` : (p.icon || "🔌")}
+  ${outOfStock ? '<span class="stock-flag">Out of stock</span>' : lowStock ? `<span class="stock-flag">Only ${p.stock} left</span>` : ""}
+</div>
+      <div class="cat-eyebrow">${esc(p.category)}</div>
+      <h4>${esc(p.name)}</h4>
+      <div class="spec-row">
+        <span class="spec-badge">${esc(p.package)}</span>
+        <span class="spec-badge pins">${p.pins}-PIN</span>
+      </div>
+      <p class="desc">${esc(p.desc)}</p>
+      <div class="tag-row">
+        ${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}
+      </div>
+      <div class="price-row">
+        <div class="price">${peso(p.price)}</div>
+        <div class="qty-stepper" ${outOfStock ? "style='visibility:hidden'" : ""}>
+          <button class="qty-minus" data-id="${p.id}" aria-label="Decrease quantity">−</button>
+          <span>${qty}</span>
+          <button class="qty-plus" data-id="${p.id}" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <button class="btn ${qty>0?"btn-primary in-cart":"btn-secondary"} add-btn" data-id="${p.id}" ${outOfStock?"disabled":""}>
+        ${outOfStock ? "Unavailable" : qty>0 ? `In Cart · ${qty}` : "Add to Cart"}
+      </button>
+    </div>`;
+  }).join("");
+
+  grid.querySelectorAll(".qty-plus").forEach(b => b.addEventListener("click", () => stepQty(b.dataset.id, 1)));
+  grid.querySelectorAll(".qty-minus").forEach(b => b.addEventListener("click", () => stepQty(b.dataset.id, -1)));
+  grid.querySelectorAll("img.product-photo").forEach(img => {
+  img.addEventListener("error", () => {
+    const p = byId(img.closest(".product-card")?.dataset.id);
+    img.replaceWith(document.createTextNode(p?.icon || "🔌"));
+  }, { once:true });
+});
+}
+
+document.getElementById("searchInput").addEventListener("input", e => {
+  searchTerm = e.target.value;
+  renderProducts();
+});
+
+
+/* =================================================================
+   6. CART
+   ================================================================= */
+// No-op kept only so existing call sites read naturally; the cart
+// is deliberately in-memory only and is never written to storage.
+function persistCart(){ /* intentionally not persisted */ }
+
+function stepQty(id, delta){
+  const product = byId(id);
+  if(!product) return;
+  let line = cart.find(c => c.id === id);
+  if(!line && delta > 0){
+    cart.push({id, qty:1});
+  }else if(line){
+    line.qty += delta;
+    line.qty = Math.max(0, Math.min(line.qty, product.stock));
+    if(line.qty === 0) cart = cart.filter(c => c.id !== id);
+  }
+  persistCart();
+  renderProducts();
+  renderCart();
+}
+
+function addToCartQuick(id){
+  const product = byId(id);
+  if(!product || product.stock <= 0) return;
+  let line = cart.find(c => c.id === id);
+  if(line){
+    if(line.qty < product.stock) line.qty += 1;
+  }else{
+    cart.push({id, qty:1});
+  }
+  persistCart();
+  renderProducts();
+  renderCart();
+  toast(`Added ${product.name} to cart`);
+  openCart();
+}
+
+function cartTotals(){
+  let subtotal = 0, count = 0;
+  cart.forEach(line => {
+    const p = byId(line.id);
+    if(!p) return;
+    subtotal += p.price * line.qty;
+    count += line.qty;
+  });
+  return {subtotal, count};
+}
+
+function renderCart(){
+  const body = document.getElementById("cartBody");
+  const {subtotal, count} = cartTotals();
+
+  document.getElementById("cartBadge").hidden = count === 0;
+  document.getElementById("cartBadge").textContent = count;
+  document.getElementById("cartSubtotal").textContent = peso(subtotal);
+  document.getElementById("cartTotal").textContent = peso(subtotal);
+  document.getElementById("cartFoot").style.display = cart.length === 0 ? "none" : "block";
+
+  if(cart.length === 0){
+    body.innerHTML = `
+      <div class="cart-empty">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" style="margin:0 auto 10px;"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <p>Your cart is empty.</p>
+      </div>`;
+    return;
+  }
+
+  body.innerHTML = cart.map(line => {
+    const p = byId(line.id);
+    if(!p) return "";
+    return `
+    <div class="cart-item">
+      <div class="thumb">${p.icon || "🔌"}</div>
+      <div class="info">
+        <h5>${esc(p.name)}</h5>
+        <div class="unit-price">${peso(p.price)} each</div>
+        <div class="row-actions">
+          <div class="qty-stepper">
+            <button class="qty-minus" data-id="${p.id}">−</button>
+            <span>${line.qty}</span>
+            <button class="qty-plus" data-id="${p.id}">+</button>
+          </div>
+          <span class="line-total">${peso(p.price * line.qty)}</span>
+        </div>
+      </div>
+      <button class="remove-btn" data-id="${p.id}" aria-label="Remove item">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>`;
+  }).join("");
+
+  body.querySelectorAll(".qty-plus").forEach(b => b.addEventListener("click", () => stepQty(b.dataset.id, 1)));
+  body.querySelectorAll(".qty-minus").forEach(b => b.addEventListener("click", () => stepQty(b.dataset.id, -1)));
+  body.querySelectorAll(".remove-btn").forEach(b => b.addEventListener("click", () => {
+    cart = cart.filter(c => c.id !== b.dataset.id);
+    persistCart();
+    renderProducts();
+    renderCart();
+  }));
+}
+
+function openCart(){
+  document.getElementById("cartDrawer").classList.add("open");
+  document.getElementById("cartOverlay").classList.add("open");
+}
+function closeCart(){
+  document.getElementById("cartDrawer").classList.remove("open");
+  document.getElementById("cartOverlay").classList.remove("open");
+}
+document.getElementById("cartBtn").addEventListener("click", openCart);
+document.getElementById("cartCloseBtn").addEventListener("click", closeCart);
+document.getElementById("cartOverlay").addEventListener("click", closeCart);
+
+
+/* =================================================================
+   7. CHECKOUT
+   ================================================================= */
+function openModal(id){ document.getElementById(id).classList.add("open"); }
+function closeModal(id){ document.getElementById(id).classList.remove("open"); }
+
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  if(cart.length === 0) return;
+  closeCart();
+  openModal("checkoutOverlay");
+});
+document.getElementById("checkoutCloseBtn").addEventListener("click", () => closeModal("checkoutOverlay"));
+document.getElementById("checkoutOverlay").addEventListener("click", e => {
+  if(e.target.id === "checkoutOverlay") closeModal("checkoutOverlay");
+});
+
+document.getElementById("confirmOrderBtn").addEventListener("click", () => {
+  if(cart.length === 0) return;
+
+  const items = cart.map(line => {
+    const p = byId(line.id);
+    return { id:p.id, name:p.name, price:p.price, icon:p.icon, qty:line.qty };
+  });
+  const total = items.reduce((s,i) => s + i.price*i.qty, 0);
+  const custName = document.getElementById("custName").value.trim();
+  const custContact = document.getElementById("custContact").value.trim();
+  const code = buildOrderCode(items, custName, custContact);
+
+  // Reduce stock for the current page load only. This is not
+  // persisted anywhere: reloading the page re-fetches products.txt
+  // and restores the file's stock numbers, which is expected for a
+  // static storefront with no shared inventory database.
+  items.forEach(i => {
+    const p = byId(i.id);
+    if(p) p.stock = Math.max(0, p.stock - i.qty);
+  });
+
+  cart = [];
+  persistCart();
+  renderCart();
+  renderProducts();
+
+  document.getElementById("custName").value = "";
+  document.getElementById("custContact").value = "";
+
+  closeModal("checkoutOverlay");
+  document.getElementById("successCode").textContent = code;
+  openModal("successOverlay");
+});
+
+document.getElementById("successCloseBtn").addEventListener("click", () => closeModal("successOverlay"));
+document.getElementById("successDoneBtn").addEventListener("click", () => closeModal("successOverlay"));
+document.getElementById("successOverlay").addEventListener("click", e => {
+  if(e.target.id === "successOverlay") closeModal("successOverlay");
+});
+document.getElementById("copyCodeBtn").addEventListener("click", () => {
+  const code = document.getElementById("successCode").textContent;
+  navigator.clipboard?.writeText(code).then(() => toast("Code copied to clipboard"))
+    .catch(() => toast("Copy failed — select the code manually"));
+});
+
+
+/* =================================================================
+   9. ADMIN — LOGIN / LOGOUT
+   ================================================================= */
+document.getElementById("adminLoginBtn").addEventListener("click", adminLogin);
+document.getElementById("adminPass").addEventListener("keydown", e => {
+  if(e.key === "Enter") adminLogin();
+});
+
+async function adminLogin(){
+  const user = document.getElementById("adminUser").value.trim();
+  const pass = document.getElementById("adminPass").value;
+  const errEl = document.getElementById("adminLoginError");
+  errEl.textContent = "";
+
+  if(!user || !pass){ errEl.textContent = "Enter both username and password."; return; }
+
+  const hash = await hashText(pass);
+  if(user === ADMIN_USERNAME && hash === ADMIN_PASS_HASH){
+    sessionStorage.setItem("eqt_admin_authed", "1");
+    document.getElementById("adminPass").value = "";
+    location.hash = "#/admin";
+    route();
+    toast("Welcome back, admin");
+  }else{
+    errEl.textContent = "Incorrect username or password.";
+  }
+}
+
+document.getElementById("adminLogoutBtn").addEventListener("click", () => {
+  sessionStorage.removeItem("eqt_admin_authed");
+  location.hash = "#/shop";
+  toast("Logged out");
+});
+
+
+/* =================================================================
+   10. ADMIN — DASHBOARD (tabs, stats, decode, products)
+   ================================================================= */
+document.querySelectorAll(".admin-tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".admin-tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".admin-panel").forEach(p => p.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(`panel-${tab.dataset.tab}`).classList.add("active");
+  });
+});
+
+function renderAdmin(){
+  renderAdminStats();
+  renderProductsTable();
+}
+
+function renderAdminStats(){
+  document.getElementById("statProducts").textContent = products.length;
+}
+
+document.getElementById("decodeBtn").addEventListener("click", decodeOrder);
+document.getElementById("decodeInput").addEventListener("keydown", e => {
+  if(e.key === "Enter") decodeOrder();
+});
+
+// Decodes purely from the code's own contents every time — there is
+// no order database to check the code against first, and nothing
+// about the decode is written anywhere. Re-decoding the same code
+// later, on any device, produces the identical result.
+function decodeOrder(){
+  const raw = document.getElementById("decodeInput").value.trim();
+  const errEl = document.getElementById("decodeError");
+  const resultEl = document.getElementById("decodeResult");
+  errEl.textContent = "";
+  resultEl.innerHTML = "";
+
+  if(!raw){ errEl.textContent = "Enter an order code."; return; }
+
+  const order = decodeOrderCode(raw);
+  if(!order){
+    errEl.textContent = "That code isn't valid — check for typos (codes are case-sensitive) or a missing character.";
+    return;
+  }
+
+  renderDecodedOrder(order);
+}
+
+function renderDecodedOrder(order){
+  const resultEl = document.getElementById("decodeResult");
+  resultEl.innerHTML = `
+    <div class="card order-detail">
+      <div class="panel-head">
+        <div>
+          <h4 style="margin:0 0 4px;font-family:'Courier New',monospace;">${esc(order.code)}</h4>
+          <p class="text-muted-note" style="margin:0;">
+            ${esc(order.customer?.name) || "No name given"} ·
+            ${esc(order.customer?.contact) || "No contact given"} ·
+            ${new Date(order.createdAt).toLocaleString()}
+          </p>
+        </div>
+      </div>
+      <p style="font-weight:600;color:var(--text-heading);font-size:.88rem;margin-bottom:10px;">Items in this order:</p>
+      ${order.items.map(i => `
+        <label class="pack-item" data-id="${i.id}">
+          <div class="thumb">${i.icon || "🔌"}</div>
+          <div class="info">
+            <div class="n">${esc(i.name)}</div>
+            <div class="m">Qty ${i.qty} · ${peso(i.price)} each</div>
+          </div>
+        </label>`).join("")}
+      <div class="summary-row total"><span>Total</span><span>${peso(order.total)}</span></div>
+    </div>`;
+}
+
+
+/* -------------------- PRODUCTS TABLE (read-only) --------------------
+   There is no in-browser add/edit/delete for products: the catalog
+   is only ever changed by editing products.txt and redeploying, per
+   project-summary.md. This table is a reference view of whatever is
+   currently loaded. */
+function renderProductsTable(){
+  const body = document.getElementById("productsTableBody");
+  if(products.length === 0){
+    body.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--text-muted);">No products loaded.</td></tr>`;
+    return;
+  }
+  body.innerHTML = products.map(p => `
+    <tr>
+      <td style="font-size:1.3rem;">${p.icon || "🔌"}</td>
+      <td>${esc(p.name)}</td>
+      <td>${esc(p.category)}</td>
+      <td style="font-family:'Courier New',monospace;font-size:.78rem;">${esc(p.package)}<br>${p.pins}-pin</td>
+      <td>${peso(p.price)}</td>
+      <td>${p.stock}</td>
+      <td>${p.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join(" ")}</td>
+    </tr>`).join("");
+}
+
+
+/* =================================================================
+   11. THEME TOGGLE
+   ================================================================= */
+function applyTheme(theme){
+  document.documentElement.setAttribute("data-theme", theme);
+  const icon = document.getElementById("themeIcon");
+  if(theme === "dark"){
+    icon.innerHTML = '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>';
+  }else{
+    icon.innerHTML = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+  }
+}
+let currentTheme = load(STORE.theme, window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+applyTheme(currentTheme);
+
+document.getElementById("themeToggle").addEventListener("click", () => {
+  currentTheme = currentTheme === "dark" ? "light" : "dark";
+  applyTheme(currentTheme);
+  save(STORE.theme, currentTheme);
+});
+
+
+/* =================================================================
+   12. MOBILE NAV TOGGLE
+   ================================================================= */
+document.getElementById("navToggle").addEventListener("click", () => {
+  document.getElementById("navLinks").classList.toggle("open");
+});
+
+
+/* =================================================================
+   13. INIT
+   -----------------------------------------------------------
+   Products come from products.txt, loaded asynchronously. If the
+   fetch fails — most commonly because the page was opened directly
+   as a file:// URL instead of being served (fetch of a local file
+   is blocked in that case) — fall back to a built-in copy of the
+   catalog so the storefront still works, and let the admin know.
+   ================================================================= */
+async function initApp(){
+  try{
+    products = await loadProductsFromFile();
+  }catch(err){
+    console.warn("Could not load products.txt — using the built-in fallback catalog instead.", err);
+    products = FALLBACK_PRODUCTS.map(p => ({...p, tags:[...p.tags]}));
+    toast("Couldn't load products.txt — showing a built-in sample catalog instead");
+  }
+  renderCategoryFilters();
+  renderCart();
+  route();
+}
+
+initApp();
+
+</script>
+</body>
+</html>
