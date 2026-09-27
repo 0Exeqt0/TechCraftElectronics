@@ -29,7 +29,7 @@ Here is the corrected format with the **image field left blank (`||`)** and addi
 #
 #   id|name|icon|category|package|pins|price|stock|tags|image|description
 
-p1|I2C LCD Module|📟|Modules|I2C Module|4|40|2|LCD,I2C,Display|/assets/Untitled design.png|I2C backpack-equipped LCD module for easy 4-wire display wiring.
+p1|I2C LCD Module|📟|Modules|I2C Module|4|40|2|LCD,I2C,Display|/assets/i2c_LCD_module.png|I2C backpack-equipped LCD module for easy 4-wire display wiring.
 p2|5mm LED - Red|🔴|Passives|5mm THT|2|3|10|LED,5mm,Red|/assets/led-red.jpg|Standard 5mm red LED for indicators and general-purpose lighting.
 p3|5mm LED - Green|🟢|Passives|5mm THT|2|3|10|LED,5mm,Green|/assets/led-green.jpg|Standard 5mm green LED for indicators and general-purpose lighting.
 p4|5mm LED - Blue|🔵|Passives|5mm THT|2|3|10|LED,5mm,Blue|/assets/led-blue.jpg|Standard 5mm blue LED for indicators and general-purpose lighting.
