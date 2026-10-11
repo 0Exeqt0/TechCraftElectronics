@@ -1307,6 +1307,40 @@ section{
 
 
 /* =========================================================
+   VARIANT PICKER (e.g. LED color, resistor value)
+   ========================================================= */
+
+.variant-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:12px;
+}
+
+.variant-btn{
+  padding:6px 13px;
+  border-radius:16px;
+  border:1px solid var(--chip-border);
+  background:var(--chip-bg);
+  color:var(--text-body);
+  font-size:.78rem;
+  font-weight:600;
+  min-height:0;
+}
+
+.variant-btn.active{
+  background:var(--indigo-400);
+  color:var(--white);
+  border-color:var(--indigo-400);
+}
+
+.variant-btn.oos{
+  opacity:.55;
+  text-decoration:line-through;
+}
+
+
+/* =========================================================
    CART BUTTON + BADGE
    ========================================================= */
 
@@ -1432,6 +1466,7 @@ section{
   justify-content:center;
   font-size:1.4rem;
   flex-shrink:0;
+  overflow:hidden;
 }
 
 .cart-item .info{
@@ -1942,6 +1977,7 @@ section{
   justify-content:center;
   font-size:1.1rem;
   flex-shrink:0;
+  overflow:hidden;
 }
 
 .pack-item .info{
@@ -2225,7 +2261,7 @@ section{
      ============================================================ -->
 <header class="site-header">
   <nav class="nav">
-    <a href="https://scontent.fmnl45-2.fna.fbcdn.net/v/t39.30808-6/658331161_122263046870164053_5723088709105863634_n.jpg?stp=dst-jpg_tt6&cstp=mx852x854&ctp=s852x854&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeECRrBfUZCnSfZT-p_tszX5Aha6q1_CA-ICFrqrX8ID4t2-0CMPsJQCg8lpgZz1cAwpzNuTXvldLMS3x05eBc8D&_nc_ohc=v9MT4_quzWEQ7kNvwHLuiI0&_nc_oc=AdpUjlToCVzvN-hA77LFQ07c-MeWQGhvguZBX16gK_t30efj4mQhmKu83saU4f9iKGM&_nc_zt=23&_nc_ht=scontent.fmnl45-2.fna&_nc_gid=8XUF-aN3xEUqcLZktqxUDw&_nc_ss=7b2a8&oh=00_AQJdWA47x0VuitEgoWrZAl8PbShbE5srFbKtFM0kYwvK8Q&oe=6ABECD2B" class="brand">
+    <a href="#/shop" class="brand">
       <div class="brand-mark">TCI</div>
       <div class="brand-text">
         <div class="name">TechCraft Electronics</div>
@@ -2364,7 +2400,7 @@ section{
             <div class="card">
               <table class="data-table">
                 <thead>
-                  <tr><th>Icon</th><th>Name</th><th>Category</th><th>Package</th><th>Price</th><th>Stock</th><th>Tags</th></tr>
+                  <tr><th>Icon</th><th>Name</th><th>Category</th><th>Package</th><th>Price</th><th>Stock</th><th>Variant Group</th><th>Tags</th></tr>
                 </thead>
                 <tbody id="productsTableBody"></tbody>
               </table>
@@ -2481,7 +2517,7 @@ section{
    authentication to a backend/server.
    ------------------------------------------------------------- */
 const ADMIN_USERNAME   = "admin";
-const ADMIN_PASS_HASH  = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9"; 
+const ADMIN_PASS_HASH  = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9";
 
 async function hashText(text){
   const enc = new TextEncoder().encode(text);
@@ -2529,51 +2565,51 @@ const FALLBACK_PRODUCTS = [
   { id:"p1", name:"LM358 Dual Op-Amp", icon:"🔧", category:"ICs",
     package:"DIP-8", pins:8, price:12, stock:240,
     desc:"Dual independent, general-purpose operational amplifier. Single-supply operation from 3V to 32V, internally frequency-compensated for unity gain stability.",
-    tags:["Op-Amp","Single Supply","Low Bias Current"] },
+    tags:["Op-Amp","Single Supply","Low Bias Current"], group:"", variant:"", image:"" },
   { id:"p2", name:"NE555 Precision Timer", icon:"⏱️", category:"ICs",
     package:"DIP-8", pins:8, price:8, stock:310,
     desc:"Highly stable timer IC for generating accurate time delays or oscillation. Astable or monostable operation, sourcing/sinking up to 200mA.",
-    tags:["Timer","Astable","Monostable"] },
+    tags:["Timer","Astable","Monostable"], group:"", variant:"", image:"" },
   { id:"p3", name:"74HC04 Hex Inverter", icon:"🔀", category:"ICs",
     package:"SOP-14", pins:14, price:9, stock:180,
     desc:"High-speed CMOS hex inverter with Schmitt-trigger inputs. Buffered outputs, 2V–6V supply range, fan-out of 10 LS-TTL loads.",
-    tags:["Logic Gate","CMOS","Schmitt Trigger"] },
+    tags:["Logic Gate","CMOS","Schmitt Trigger"], group:"", variant:"", image:"" },
   { id:"p4", name:"ATmega328P Microcontroller", icon:"🧠", category:"Microcontrollers",
     package:"DIP-28", pins:28, price:145, stock:60,
     desc:"8-bit AVR RISC-based microcontroller, 32KB flash, 2KB SRAM, 23 GPIO lines. Runs at up to 20MHz, used in Arduino UNO boards.",
-    tags:["AVR","32KB Flash","20MHz"] },
+    tags:["AVR","32KB Flash","20MHz"], group:"", variant:"", image:"" },
   { id:"p5", name:"ESP32-WROOM-32 Module", icon:"📡", category:"Modules",
     package:"SMD Module", pins:38, price:295, stock:85,
     desc:"Dual-core Wi-Fi + Bluetooth LE MCU module. 4MB flash, integrated antenna, 34 programmable GPIOs, ideal for IoT development.",
-    tags:["Wi-Fi","Bluetooth LE","Dual-core"] },
+    tags:["Wi-Fi","Bluetooth LE","Dual-core"], group:"", variant:"", image:"" },
   { id:"p6", name:"IRF540N Power MOSFET", icon:"⚡", category:"Semiconductors",
     package:"TO-220", pins:3, price:35, stock:150,
     desc:"N-channel power MOSFET, 100V VDS, 33A continuous drain current, low RDS(on) of 44mΩ. Common in motor driver and switching circuits.",
-    tags:["N-Channel","100V","33A"] },
+    tags:["N-Channel","100V","33A"], group:"", variant:"", image:"" },
   { id:"p7", name:"LM7805 Voltage Regulator", icon:"🔌", category:"Semiconductors",
     package:"TO-220", pins:3, price:18, stock:220,
     desc:"Fixed 5V positive linear voltage regulator, 1.5A output current, internal thermal overload and short-circuit protection.",
-    tags:["5V Fixed","1.5A","Linear"] },
+    tags:["5V Fixed","1.5A","Linear"], group:"", variant:"", image:"" },
   { id:"p8", name:"DS18B20 Digital Thermometer", icon:"🌡️", category:"Sensors",
     package:"TO-92", pins:3, price:65, stock:130,
     desc:"1-Wire digital temperature sensor, ±0.5°C accuracy from -10°C to +85°C, 9 to 12-bit configurable resolution, unique 64-bit serial code.",
-    tags:["1-Wire","±0.5°C","Waterproof Variant"] },
+    tags:["1-Wire","±0.5°C","Waterproof Variant"], group:"", variant:"", image:"" },
   { id:"p9", name:"PC817 Optocoupler", icon:"🔗", category:"ICs",
     package:"DIP-4", pins:4, price:11, stock:260,
     desc:"Phototransistor-output optocoupler providing 5000Vrms isolation between input LED and output transistor. Common in signal isolation circuits.",
-    tags:["Isolation","Phototransistor","5000Vrms"] },
+    tags:["Isolation","Phototransistor","5000Vrms"], group:"", variant:"", image:"" },
   { id:"p10", name:"HC-05 Bluetooth Module", icon:"📶", category:"Modules",
     package:"SIP Breakout", pins:6, price:225, stock:70,
     desc:"Serial Bluetooth 2.0 module with UART interface, master/slave configurable, 10m range, used for wireless serial communication.",
-    tags:["UART","Master/Slave","10m Range"] },
+    tags:["UART","Master/Slave","10m Range"], group:"", variant:"", image:"" },
   { id:"p11", name:"1N4007 Rectifier Diode", icon:"➡️", category:"Semiconductors",
     package:"DO-41", pins:2, price:2, stock:500,
     desc:"General-purpose rectifier diode, 1000V reverse voltage, 1A forward current. Widely used in power supply rectification.",
-    tags:["1000V","1A","Rectifier"] },
+    tags:["1000V","1A","Rectifier"], group:"", variant:"", image:"" },
   { id:"p12", name:"MPU-6050 IMU Module", icon:"🎯", category:"Sensors",
     package:"QFN-24 Module", pins:8, price:180, stock:95,
     desc:"6-axis motion tracking device combining a 3-axis gyroscope and 3-axis accelerometer with I2C digital output.",
-    tags:["I2C","Gyroscope","Accelerometer"] },
+    tags:["I2C","Gyroscope","Accelerometer"], group:"", variant:"", image:"" },
 ];
 
 // Populated by initApp() from products.txt (or FALLBACK_PRODUCTS).
@@ -2591,11 +2627,17 @@ let cart = []; // [{id, qty}]
    Format: one product per non-empty, non-comment ("#") line,
    pipe-delimited:
 
-     id|name|icon|category|package|pins|price|stock|tag1,tag2|description
+     id|name|icon|category|package|pins|price|stock|tags|image|group|variant|description
 
-   The description is everything after the 9th "|", so it may
-   itself contain commas safely. See products.txt for real
-   examples.
+   - image is an optional photo URL. Leave it blank to fall back
+     to the emoji icon.
+   - group/variant are optional and let several rows be shown as
+     ONE product card with a variant picker (e.g. a "5mm LED"
+     card with Red/Green/Blue buttons), instead of one card per
+     row. See "VARIANTS" section below for details.
+   - The description is everything after the 12th "|", so it may
+     itself contain commas safely. See products.txt for real
+     examples.
    ------------------------------------------------------------- */
 function parseProductsTxt(text){
   return text
@@ -2604,20 +2646,22 @@ function parseProductsTxt(text){
     .filter(line => line && !line.startsWith("#"))
     .map(line => {
       const parts = line.split("|");
-      const [id, name, icon, category, pkg, pinsRaw, priceRaw, stockRaw, tagsRaw, imageRaw, ...descParts] = parts;
-return {
-  id: (id || "").trim(),
-  name: (name || "").trim(),
-  icon: (icon || "🔌").trim(),
-  category: (category || "").trim(),
-  package: (pkg || "").trim(),
-  pins: parseInt(pinsRaw, 10) || 0,
-  price: parseFloat(priceRaw) || 0,
-  stock: parseInt(stockRaw, 10) || 0,
-  tags: (tagsRaw || "").split(",").map(t => t.trim()).filter(Boolean),
-  image: (imageRaw || "").trim(),
-  desc: descParts.join("|").trim(),
-};
+      const [id, name, icon, category, pkg, pinsRaw, priceRaw, stockRaw, tagsRaw, imageRaw, groupRaw, variantRaw, ...descParts] = parts;
+      return {
+        id: (id || "").trim(),
+        name: (name || "").trim(),
+        icon: (icon || "🔌").trim(),
+        category: (category || "").trim(),
+        package: (pkg || "").trim(),
+        pins: parseInt(pinsRaw, 10) || 0,
+        price: parseFloat(priceRaw) || 0,
+        stock: parseInt(stockRaw, 10) || 0,
+        tags: (tagsRaw || "").split(",").map(t => t.trim()).filter(Boolean),
+        image: (imageRaw || "").trim(),
+        group: (groupRaw || "").trim(),
+        variant: (variantRaw || "").trim(),
+        desc: descParts.join("|").trim(),
+      };
     })
     .filter(p => p.id && p.name);
 }
@@ -2660,6 +2704,13 @@ function toast(msg){
    seen this order before — can decode the code on its own and
    recover exactly what was ordered and how much of it, with
    nothing but the code itself.
+
+   Because every VARIANT (e.g. "5mm LED - Red") is just a normal
+   product row with its own id under the hood, the order code
+   already captures exactly which variant was bought — there is
+   nothing extra to encode. byId() below resolves that id back to
+   the right variant (name, icon, group/variant labels) at decode
+   time, the same way it resolves any other product.
 
    There is intentionally no packing/shipping *status* stored
    anywhere (browser storage or otherwise): the code is the
@@ -2722,6 +2773,8 @@ function decodeOrderCode(rawCode){
       id, qty, price,
       name: p ? p.name : `Removed / unknown item (${id})`,
       icon: p ? p.icon : "❓",
+      group: p ? p.group : "",
+      variant: p ? p.variant : "",
     };
   });
   const total = items.reduce((s,i) => s + i.qty * i.price, 0);
@@ -2771,10 +2824,25 @@ window.addEventListener("hashchange", route);
 
 
 /* =================================================================
-   5. SHOP — PRODUCT GRID
+   5. SHOP — PRODUCT GRID (with VARIANTS)
+   -----------------------------------------------------------
+   A "variant group" is a set of product rows that share the same
+   non-empty `group` value (e.g. three rows all with
+   group:"5mm LED", variant:"Red"/"Green"/"Blue"). Each row is
+   still a completely normal product with its own id, price and
+   stock — grouping only changes how the SHOP GRID displays them
+   (one card with a picker instead of three separate cards).
+   Cart, checkout, order codes and the admin decoder all keep
+   working on the underlying per-variant product id and never
+   need to know about grouping at all.
+
+   selectedVariant remembers which variant id is currently shown
+   for each group, so switching tabs/categories/searching doesn't
+   reset your pick mid-session.
    ================================================================= */
 let activeCategory = "All";
 let searchTerm = "";
+let selectedVariant = {}; // groupName -> currently displayed product id
 
 function renderCategoryFilters(){
   const cats = ["All", ...new Set(products.map(p => p.category))];
@@ -2791,48 +2859,45 @@ function renderCategoryFilters(){
   });
 }
 
-function renderProducts(){
-  const grid = document.getElementById("productGrid");
-  const term = searchTerm.trim().toLowerCase();
+// One card's markup. `p` is the specific product row being shown
+// right now (for a grouped card, that's the currently selected
+// variant) — every price/stock/qty/cart detail comes from this
+// exact row, so Add to Cart always adds the right variant.
+// `opts.title` overrides the h4 (group name instead of p.name).
+// `opts.variants` + `opts.group`, when present, render the picker.
+function productCardHTML(p, opts){
+  opts = opts || {};
+  const title = opts.title || p.name;
+  const inCart = cart.find(c => c.id === p.id);
+  const qty = inCart ? inCart.qty : 0;
+  const lowStock = p.stock > 0 && p.stock <= 5;
+  const outOfStock = p.stock <= 0;
 
-  const filtered = products.filter(p => {
-    const matchCat = activeCategory === "All" || p.category === activeCategory;
-    const matchSearch = !term ||
-      p.name.toLowerCase().includes(term) ||
-      p.desc.toLowerCase().includes(term) ||
-      p.tags.some(t => t.toLowerCase().includes(term));
-    return matchCat && matchSearch;
-  });
+  const variantRow = opts.variants ? `
+    <div class="variant-row">
+      ${opts.variants.map(v => `
+        <button type="button"
+          class="variant-btn ${v.id===p.id?"active":""} ${v.stock<=0?"oos":""}"
+          data-group="${esc(opts.group)}"
+          data-variant-id="${v.id}"
+          title="${v.stock<=0?"Out of stock":""}">
+          ${esc(v.variant || v.name)}
+        </button>`).join("")}
+    </div>` : "";
 
-  document.getElementById("resultCount").textContent =
-    `${filtered.length} product${filtered.length===1?"":"s"} found`;
-
-  if(filtered.length === 0){
-    grid.innerHTML = `
-      <div class="empty-state">
-        <svg class="icon icon-lg" viewBox="0 0 24 24" style="margin:0 auto 10px;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
-        <p>No products match your search.</p>
-      </div>`;
-    return;
-  }
-
-  grid.innerHTML = filtered.map(p => {
-    const inCart = cart.find(c => c.id === p.id);
-    const qty = inCart ? inCart.qty : 0;
-    const lowStock = p.stock > 0 && p.stock <= 5;
-    const outOfStock = p.stock <= 0;
-    return `
-    <div class="card product-card" data-id="${p.id}">
+  return `
+    <div class="card product-card" data-id="${p.id}" ${opts.group ? `data-group="${esc(opts.group)}"` : ""}>
       <div class="thumb">
-  ${p.image ? `<img class="product-photo" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">` : (p.icon || "🔌")}
-  ${outOfStock ? '<span class="stock-flag">Out of stock</span>' : lowStock ? `<span class="stock-flag">Only ${p.stock} left</span>` : ""}
-</div>
+        ${p.image ? `<img class="product-photo" src="${esc(p.image)}" alt="${esc(title)}" loading="lazy">` : (p.icon || "🔌")}
+        ${outOfStock ? '<span class="stock-flag">Out of stock</span>' : lowStock ? `<span class="stock-flag">Only ${p.stock} left</span>` : ""}
+      </div>
       <div class="cat-eyebrow">${esc(p.category)}</div>
-      <h4>${esc(p.name)}</h4>
+      <h4>${esc(title)}</h4>
       <div class="spec-row">
         <span class="spec-badge">${esc(p.package)}</span>
         <span class="spec-badge pins">${p.pins}-PIN</span>
       </div>
+      ${variantRow}
       <p class="desc">${esc(p.desc)}</p>
       <div class="tag-row">
         ${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}
@@ -2849,16 +2914,83 @@ function renderProducts(){
         ${outOfStock ? "Unavailable" : qty>0 ? `In Cart · ${qty}` : "Add to Cart"}
       </button>
     </div>`;
+}
+
+function renderProducts(){
+  const grid = document.getElementById("productGrid");
+  const term = searchTerm.trim().toLowerCase();
+
+  function matches(p){
+    const matchCat = activeCategory === "All" || p.category === activeCategory;
+    const matchSearch = !term ||
+      p.name.toLowerCase().includes(term) ||
+      p.desc.toLowerCase().includes(term) ||
+      (p.variant && p.variant.toLowerCase().includes(term)) ||
+      p.tags.some(t => t.toLowerCase().includes(term));
+    return matchCat && matchSearch;
+  }
+
+  // Build the display list: one entry per variant GROUP (using all
+  // of that group's rows, regardless of which ones match — so
+  // switching variants on a visible card never "loses" an option),
+  // and one entry per standalone (non-grouped) product. A group is
+  // only shown at all if at least one of its variants matches the
+  // current filter.
+  const seenGroups = new Set();
+  const entries = [];
+  products.forEach(p => {
+    if(p.group){
+      if(seenGroups.has(p.group)) return;
+      seenGroups.add(p.group);
+      const variants = products.filter(v => v.group === p.group);
+      if(variants.some(matches)) entries.push({ isGroup:true, group:p.group, variants });
+    }else{
+      if(matches(p)) entries.push({ isGroup:false, product:p });
+    }
+  });
+
+  document.getElementById("resultCount").textContent =
+    `${entries.length} product${entries.length===1?"":"s"} found`;
+
+  if(entries.length === 0){
+    grid.innerHTML = `
+      <div class="empty-state">
+        <svg class="icon icon-lg" viewBox="0 0 24 24" style="margin:0 auto 10px;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        <p>No products match your search.</p>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = entries.map(entry => {
+    if(entry.isGroup){
+      const variants = entry.variants;
+      let chosen = variants.find(v => v.id === selectedVariant[entry.group]);
+      if(!chosen){
+        // Prefer a variant that matches the current filter, then any
+        // in-stock variant, then just the first row.
+        chosen = variants.find(matches) || variants.find(v => v.stock > 0) || variants[0];
+      }
+      selectedVariant[entry.group] = chosen.id;
+      return productCardHTML(chosen, { title: entry.group, group: entry.group, variants });
+    }else{
+      return productCardHTML(entry.product);
+    }
   }).join("");
 
   grid.querySelectorAll(".qty-plus").forEach(b => b.addEventListener("click", () => stepQty(b.dataset.id, 1)));
   grid.querySelectorAll(".qty-minus").forEach(b => b.addEventListener("click", () => stepQty(b.dataset.id, -1)));
+  grid.querySelectorAll(".add-btn").forEach(b => b.addEventListener("click", () => addToCartQuick(b.dataset.id)));
+  grid.querySelectorAll(".variant-btn").forEach(b => b.addEventListener("click", () => {
+    selectedVariant[b.dataset.group] = b.dataset.variantId;
+    renderProducts();
+  }));
+  // If a product's image URL is broken/unreachable, fall back to its emoji icon instead of a broken-image glyph.
   grid.querySelectorAll("img.product-photo").forEach(img => {
-  img.addEventListener("error", () => {
-    const p = byId(img.closest(".product-card")?.dataset.id);
-    img.replaceWith(document.createTextNode(p?.icon || "🔌"));
-  }, { once:true });
-});
+    img.addEventListener("error", () => {
+      const p = byId(img.closest(".product-card")?.dataset.id);
+      img.replaceWith(document.createTextNode(p?.icon || "🔌"));
+    }, { once:true });
+  });
 }
 
 document.getElementById("searchInput").addEventListener("input", e => {
@@ -2939,11 +3071,15 @@ function renderCart(){
   body.innerHTML = cart.map(line => {
     const p = byId(line.id);
     if(!p) return "";
+    // Show "Group — Variant" when this item is a variant (e.g.
+    // "5mm LED — Red") so it's unambiguous in the cart, otherwise
+    // just the plain product name.
+    const label = p.group && p.variant ? `${p.group} — ${p.variant}` : p.name;
     return `
     <div class="cart-item">
-      <div class="thumb">${p.icon || "🔌"}</div>
+      <div class="thumb" data-id="${p.id}">${p.image ? `<img class="product-photo" src="${esc(p.image)}" alt="${esc(label)}" loading="lazy">` : (p.icon || "🔌")}</div>
       <div class="info">
-        <h5>${esc(p.name)}</h5>
+        <h5>${esc(label)}</h5>
         <div class="unit-price">${peso(p.price)} each</div>
         <div class="row-actions">
           <div class="qty-stepper">
@@ -2968,6 +3104,12 @@ function renderCart(){
     renderProducts();
     renderCart();
   }));
+  body.querySelectorAll("img.product-photo").forEach(img => {
+    img.addEventListener("error", () => {
+      const p = byId(img.closest(".thumb")?.dataset.id);
+      img.replaceWith(document.createTextNode(p?.icon || "🔌"));
+    }, { once:true });
+  });
 }
 
 function openCart(){
@@ -3143,14 +3285,17 @@ function renderDecodedOrder(order){
         </div>
       </div>
       <p style="font-weight:600;color:var(--text-heading);font-size:.88rem;margin-bottom:10px;">Items in this order:</p>
-      ${order.items.map(i => `
+      ${order.items.map(i => {
+        const label = i.group && i.variant ? `${i.group} — ${i.variant}` : i.name;
+        return `
         <label class="pack-item" data-id="${i.id}">
           <div class="thumb">${i.icon || "🔌"}</div>
           <div class="info">
-            <div class="n">${esc(i.name)}</div>
+            <div class="n">${esc(label)}</div>
             <div class="m">Qty ${i.qty} · ${peso(i.price)} each</div>
           </div>
-        </label>`).join("")}
+        </label>`;
+      }).join("")}
       <div class="summary-row total"><span>Total</span><span>${peso(order.total)}</span></div>
     </div>`;
 }
@@ -3160,11 +3305,12 @@ function renderDecodedOrder(order){
    There is no in-browser add/edit/delete for products: the catalog
    is only ever changed by editing products.txt and redeploying, per
    project-summary.md. This table is a reference view of whatever is
-   currently loaded. */
+   currently loaded, including which rows belong to the same variant
+   group. */
 function renderProductsTable(){
   const body = document.getElementById("productsTableBody");
   if(products.length === 0){
-    body.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--text-muted);">No products loaded.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="8" style="text-align:center;color:var(--text-muted);">No products loaded.</td></tr>`;
     return;
   }
   body.innerHTML = products.map(p => `
@@ -3175,6 +3321,7 @@ function renderProductsTable(){
       <td style="font-family:'Courier New',monospace;font-size:.78rem;">${esc(p.package)}<br>${p.pins}-pin</td>
       <td>${peso(p.price)}</td>
       <td>${p.stock}</td>
+      <td>${p.group ? `${esc(p.group)}${p.variant ? ` (${esc(p.variant)})` : ""}` : "—"}</td>
       <td>${p.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join(" ")}</td>
     </tr>`).join("");
 }

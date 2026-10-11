@@ -3,18 +3,29 @@
 # One product per line. Blank lines and lines starting with "#" are
 # ignored. Fields are separated by "|" in this exact order:
 #
-#   id|name|icon|category|package|pins|price|stock|tags|description
+#   id|name|icon|category|package|pins|price|stock|tags|image|group|variant|description
 #
 # - id: stable, unique. NEVER reuse or change an id once a product
 #   has been sold — order codes reference products by id, and
 #   changing an id here will make the decoder show that item as
 #   "Removed/unknown item" for existing orders.
-# - icon: a single emoji shown as the product thumbnail.
-# - pins: integer pin count.
+# - icon: emoji thumbnail fallback (shown when "image" is blank, or
+#   if the image URL fails to load).
 # - price: number, no currency symbol (interpreted as PHP/₱).
-# - stock: integer units currently available.
-# - tags: comma-separated, no "|" characters.
-# - description: everything after the 9th "|", so it may contain
+# - image: optional photo URL or path. Leave blank to just show the
+#   emoji icon.
+#
+# --- VARIANTS (group / variant) ---
+# Give several rows the SAME "group" text to show them as ONE shop
+# card with a variant picker instead of separate cards. Each row is
+# still its own normal product underneath — own id, own price, own
+# stock — so the cart, order code, and admin decoder automatically
+# track exactly which variant was bought. No other setup needed.
+#   - group:   the shared card title, e.g. "5mm LED"
+#   - variant: the label shown on that row's picker button, e.g. "Red"
+# Leave BOTH blank for an ordinary single-card product (most rows).
+#
+# - description: everything after the 12th "|", so it may contain
 #   commas freely. Keep it on one line (no line breaks).
 #
 # To add a product: append a new line with a new, unused id.
@@ -22,37 +33,37 @@
 # decode correctly — the code carries its own product name/price).
 # Then commit and push this file.
 
-Here is the corrected format with the **image field left blank (`||`)** and additional products added. I kept the same pipe-delimited structure:
+p1|I2C LCD Module|📟|Modules|I2C Module|4|40|2|LCD,I2C,Display|assets/i2c_LCD_module.png|||I2C backpack-equipped LCD module for easy 4-wire display wiring.
 
-# text
-# EXE QT Electronics — product catalog
-#
-#   id|name|icon|category|package|pins|price|stock|tags|image|description
+# --- 5mm LED: one shop card, three color variants ---
+p2|5mm LED - Red|🔴|Passives|5mm THT|2|3|10|LED,5mm,Red|assets/led_red.png|5mm LED|Red|Standard 5mm red LED for indicators and general-purpose lighting.
+p3|5mm LED - Green|🟢|Passives|5mm THT|2|3|10|LED,5mm,Green|assets/led_green.png|5mm LED|Green|Standard 5mm green LED for indicators and general-purpose lighting.
+p4|5mm LED - Blue|🔵|Passives|5mm THT|2|3|10|LED,5mm,Blue|assets/led_blue.png|5mm LED|Blue|Standard 5mm blue LED for indicators and general-purpose lighting.
 
-p1|I2C LCD Module|📟|Modules|I2C Module|4|40|2|LCD,I2C,Display|assets/i2c_LCD_module.png|I2C backpack-equipped LCD module for easy 4-wire display wiring.
-p2|5mm LED - Red|🔴|Passives|5mm THT|2|3|10|LED,5mm,Red|assets/led_red.png|Standard 5mm red LED for indicators and general-purpose lighting.
-p3|5mm LED - Green|🟢|Passives|5mm THT|2|3|10|LED,5mm,Green|assets/led_green.png|Standard 5mm green LED for indicators and general-purpose lighting.
-p4|5mm LED - Blue|🔵|Passives|5mm THT|2|3|10|LED,5mm,Blue|assets/led_blue.png|Standard 5mm blue LED for indicators and general-purpose lighting.
-p5|MG90S Micro Servo|⚙️|Modules|Servo Motor|3|65|1|Servo,MG90S,Actuator|assets/servo.png|Metal-gear micro servo motor for robotics and small mechanical projects.
-p6|Breadboard|🟩|Tools & Supplies|830-Tie|0|90|3|Breadboard,Prototyping|/assets/breadboard.jpg|Solderless breadboard for prototyping circuits.
-p7|LCD1602 Display (Blue Screen)|🖥️|Modules|16x2 Module|16|90|1|LCD,16x2,Display|/assets/lcd1602-blue.jpg|16x2 character LCD with blue backlight for text output.
-p8|Arduino Uno (ATmega328P)|🧠|Microcontrollers|Arduino Board|20|290|1|Arduino,ATmega328P,Board|assets/arduino_uno.png|Arduino Uno development board built on the ATmega328P microcontroller.
-p9|18650 Battery Holder|🔋|Power|Battery Holder|2|30|1|Battery Holder,18650|/assets/battery-holder-18650.jpg|Single-cell holder for 18650 lithium-ion batteries.
-p10|Active Buzzer|🔊|Modules|Active Buzzer|2|10|4|Buzzer,Alarm,Sound|/assets/buzzer.jpg|Active buzzer module for simple alarms and audio feedback.
-p11|10K 3-Pin Potentiometer|🎚️|Passives|3-Pin THT|3|20|5|Potentiometer,10K,Variable Resistor|/assets/potentiometer-10k.jpg|10K ohm rotary potentiometer for adjustable analog input.
-p12|MAX7219 Dot Matrix Module|🔢|Modules|8x8 Module|5|60|2|MAX7219,Dot Matrix,Display|/assets/max7219-dot-matrix.jpg|8x8 LED dot matrix display driven by a MAX7219 controller.
-p13|4x4 Membrane Keypad|🔢|Modules|Membrane Keypad|8|40|1|Keypad,4x4,Input|/assets/keypad-4x4.jpg|16-button membrane keypad for numeric and command input.
-p14|Male-to-Female Jumper Wires (20cm)|🔌|Tools & Supplies|20cm M-F|0|60|1|Jumper Wire,M-F,20cm|/assets/jumper-wire-mf-20cm.jpg|Male-to-female jumper wire pack, 20cm length, for breadboard wiring.
-p15|Single Row Male Header Pins (10pcs)|📌|Tools & Supplies|10-Pin Strip|10|10|5|Header Pins,Male,Single Row|/assets/header-pins-single-row.jpg|Breakable single-row male header pin strips, 10 pieces per pack.
-p16|Arduino Uno Cable (30cm)|🔌|Tools & Supplies|USB-B to USB-A 30cm|0|50|2|Arduino,USB Cable,30cm|/assets/arduino-cable-30cm.jpg|USB cable for connecting an Arduino Uno to a computer.
-p17|Stepper Motor with Driver Module|⚙️|Modules|28BYJ-48 + ULN2003|5|90|1|Stepper Motor,28BYJ-48,ULN2003|/assets/stepper-motor-module.jpg|28BYJ-48 stepper motor bundled with its ULN2003 driver module.
-p18|Storage Box|📦|Tools & Supplies|Plastic Box|0|150|1|Storage,Organizer|/assets/storage-box.jpg|Plastic storage box for organizing small electronic components.
-p19|5528 LDR Photoresistor|💡|Sensors|5528 THT|2|3|39|LDR,Photoresistor,Light Sensor|/assets/ldr-5528.jpg|Light-dependent resistor for basic light-sensing circuits.
-p20|8x12cm PCB (Double-Sided)|🟫|Tools & Supplies|8x12cm Prototype|0|50|3|PCB,Double-Sided,Prototyping|/assets/pcb-8x12-double-sided.jpg|Double-sided prototyping PCB board, 8x12cm.
-p21|2N3904 NPN Transistor|🔺|Semiconductors|TO-92|3|3|47|Transistor,NPN,2N3904|/assets/transistor-2n3904.jpg|General-purpose NPN transistor for switching and amplification.
-p22|7-Segment Display 5611AS (Common Cathode)|🔟|Displays|0.56in Single Digit|10|15|8|7-Segment,Common Cathode,5611AS|/assets/7-segment-common-cathode.jpg|Single-digit 7-segment display, common cathode configuration.
-p23|7-Segment Display 5611BS (Common Anode)|🔟|Displays|0.56in Single Digit|10|15|7|7-Segment,Common Anode,5611BS|/assets/7-segment-common-anode.jpg|Single-digit 7-segment display, common anode configuration.
-p24|Infrared Remote Control Kit|📡|Modules|IR Receiver + Remote|3|50|1|Infrared,Remote,IR Receiver|/assets/ir-remote-kit.jpg|IR receiver module with matching remote control for wireless input.
-p25|18650 Lithium-Ion Battery|🔋|Power|Li-ion Cell|2|120|3|Battery,18650,Li-ion|/assets/battery-18650.jpg|Rechargeable 18650 lithium-ion cell for portable power projects.
-p26|1N4007 Rectifier Diode|➡️|Semiconductors|DO-41|2|4|10|Diode,1N4007,Rectifier|/assets/diode-1n4007.jpg|General-purpose rectifier diode, 1000V reverse voltage, 1A forward current.
+p5|MG90S Micro Servo|⚙️|Modules|Servo Motor|3|65|1|Servo,MG90S,Actuator|assets/servo.png|||Metal-gear micro servo motor for robotics and small mechanical projects.
+p6|Breadboard|🟩|Tools & Supplies|830-Tie|0|90|3|Breadboard,Prototyping|/assets/breadboard.jpg|||Solderless breadboard for prototyping circuits.
+p7|LCD1602 Display (Blue Screen)|🖥️|Modules|16x2 Module|16|90|1|LCD,16x2,Display|/assets/lcd1602-blue.jpg|||16x2 character LCD with blue backlight for text output.
+p8|Arduino Uno (ATmega328P)|🧠|Microcontrollers|Arduino Board|20|290|1|Arduino,ATmega328P,Board|assets/arduino_uno.png|||Arduino Uno development board built on the ATmega328P microcontroller.
+p9|18650 Battery Holder|🔋|Power|Battery Holder|2|30|1|Battery Holder,18650|/assets/battery-holder-18650.jpg|||Single-cell holder for 18650 lithium-ion batteries.
+p10|Active Buzzer|🔊|Modules|Active Buzzer|2|10|4|Buzzer,Alarm,Sound|/assets/buzzer.jpg|||Active buzzer module for simple alarms and audio feedback.
+p11|10K 3-Pin Potentiometer|🎚️|Passives|3-Pin THT|3|20|5|Potentiometer,10K,Variable Resistor|/assets/potentiometer-10k.jpg|||10K ohm rotary potentiometer for adjustable analog input.
+p12|MAX7219 Dot Matrix Module|🔢|Modules|8x8 Module|5|60|2|MAX7219,Dot Matrix,Display|/assets/max7219-dot-matrix.jpg|||8x8 LED dot matrix display driven by a MAX7219 controller.
+p13|4x4 Membrane Keypad|🔢|Modules|Membrane Keypad|8|40|1|Keypad,4x4,Input|/assets/keypad-4x4.jpg|||16-button membrane keypad for numeric and command input.
+p14|Male-to-Female Jumper Wires (20cm)|🔌|Tools & Supplies|20cm M-F|0|60|1|Jumper Wire,M-F,20cm|/assets/jumper-wire-mf-20cm.jpg|||Male-to-female jumper wire pack, 20cm length, for breadboard wiring.
+p15|Single Row Male Header Pins (10pcs)|📌|Tools & Supplies|10-Pin Strip|10|10|5|Header Pins,Male,Single Row|/assets/header-pins-single-row.jpg|||Breakable single-row male header pin strips, 10 pieces per pack.
+p16|Arduino Uno Cable (30cm)|🔌|Tools & Supplies|USB-B to USB-A 30cm|0|50|2|Arduino,USB Cable,30cm|/assets/arduino-cable-30cm.jpg|||USB cable for connecting an Arduino Uno to a computer.
+p17|Stepper Motor with Driver Module|⚙️|Modules|28BYJ-48 + ULN2003|5|90|1|Stepper Motor,28BYJ-48,ULN2003|/assets/stepper-motor-module.jpg|||28BYJ-48 stepper motor bundled with its ULN2003 driver module.
+p18|Storage Box|📦|Tools & Supplies|Plastic Box|0|150|1|Storage,Organizer|/assets/storage-box.jpg|||Plastic storage box for organizing small electronic components.
+p19|5528 LDR Photoresistor|💡|Sensors|5528 THT|2|3|39|LDR,Photoresistor,Light Sensor|/assets/ldr-5528.jpg|||Light-dependent resistor for basic light-sensing circuits.
+p20|8x12cm PCB (Double-Sided)|🟫|Tools & Supplies|8x12cm Prototype|0|50|3|PCB,Double-Sided,Prototyping|/assets/pcb-8x12-double-sided.jpg|||Double-sided prototyping PCB board, 8x12cm.
+p21|2N3904 NPN Transistor|🔺|Semiconductors|TO-92|3|3|47|Transistor,NPN,2N3904|/assets/transistor-2n3904.jpg|||General-purpose NPN transistor for switching and amplification.
+p22|7-Segment Display 5611AS (Common Cathode)|🔟|Displays|0.56in Single Digit|10|15|8|7-Segment,Common Cathode,5611AS|/assets/7-segment-common-cathode.jpg|||Single-digit 7-segment display, common cathode configuration.
+p23|7-Segment Display 5611BS (Common Anode)|🔟|Displays|0.56in Single Digit|10|15|7|7-Segment,Common Anode,5611BS|/assets/7-segment-common-anode.jpg|||Single-digit 7-segment display, common anode configuration.
+p24|Infrared Remote Control Kit|📡|Modules|IR Receiver + Remote|3|50|1|Infrared,Remote,IR Receiver|/assets/ir-remote-kit.jpg|||IR receiver module with matching remote control for wireless input.
+p25|18650 Lithium-Ion Battery|🔋|Power|Li-ion Cell|2|120|3|Battery,18650,Li-ion|/assets/battery-18650.jpg|||Rechargeable 18650 lithium-ion cell for portable power projects.
+p26|1N4007 Rectifier Diode|➡️|Semiconductors|DO-41|2|4|10|Diode,1N4007,Rectifier|/assets/diode-1n4007.jpg|||General-purpose rectifier diode, 1000V reverse voltage, 1A forward current.
 
+# --- Resistor and Capacitor: add specific values here later, same
+#     pattern as the LED block above, e.g.:
+# p27|Resistor 220 ohm 1/4W|⚪|Passives|Axial THT|2|1|100|Resistor,220ohm|/assets/resistor.jpg|Resistor|220 ohm|Carbon film resistor, 220 ohm, 1/4 watt, ±5% tolerance.
+# p28|Resistor 1K ohm 1/4W|⚪|Passives|Axial THT|2|1|100|Resistor,1Kohm|/assets/resistor.jpg|Resistor|1K ohm|Carbon film resistor, 1K ohm, 1/4 watt, ±5% tolerance.
