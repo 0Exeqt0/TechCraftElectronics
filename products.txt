@@ -57,8 +57,10 @@ p18|Storage Box|📦|Tools & Supplies|Plastic Box|0|150|1|Storage,Organizer|/ass
 p19|5528 LDR Photoresistor|💡|Sensors|5528 THT|2|3|39|LDR,Photoresistor,Light Sensor|/assets/ldr-5528.jpg|||Light-dependent resistor for basic light-sensing circuits.
 p20|8x12cm PCB (Double-Sided)|🟫|Tools & Supplies|8x12cm Prototype|0|50|3|PCB,Double-Sided,Prototyping|/assets/pcb-8x12-double-sided.jpg|||Double-sided prototyping PCB board, 8x12cm.
 p21|2N3904 NPN Transistor|🔺|Semiconductors|TO-92|3|3|47|Transistor,NPN,2N3904|/assets/transistor-2n3904.jpg|||General-purpose NPN transistor for switching and amplification.
-p22|7-Segment Display 5611AS (Common Cathode)|🔟|Displays|0.56in Single Digit|10|15|8|7-Segment,Common Cathode,5611AS|/assets/7-segment-common-cathode.jpg|||Single-digit 7-segment display, common cathode configuration.
-p23|7-Segment Display 5611BS (Common Anode)|🔟|Displays|0.56in Single Digit|10|15|7|7-Segment,Common Anode,5611BS|/assets/7-segment-common-anode.jpg|||Single-digit 7-segment display, common anode configuration.
+
+p22|7-Segment Display 5611AS (Common Cathode)|🔟|Displays|0.56in Single Digit|10|15|8|7-Segment,Common Cathode,5611AS|/assets/7-segment-common-cathode.jpg|7Segment|Common Cathode|Single-digit 7-segment display, common cathode configuration.
+p23|7-Segment Display 5611BS (Common Anode)|🔟|Displays|0.56in Single Digit|10|15|7|7-Segment,Common Anode,5611BS|/assets/7-segment-common-anode.jpg|7Segment|Common Anode|Single-digit 7-segment display, common anode configuration.
+
 p24|Infrared Remote Control Kit|📡|Modules|IR Receiver + Remote|3|50|1|Infrared,Remote,IR Receiver|/assets/ir-remote-kit.jpg|||IR receiver module with matching remote control for wireless input.
 p25|18650 Lithium-Ion Battery|🔋|Power|Li-ion Cell|2|120|3|Battery,18650,Li-ion|/assets/battery-18650.jpg|||Rechargeable 18650 lithium-ion cell for portable power projects.
 p26|1N4007 Rectifier Diode|➡️|Semiconductors|DO-41|2|4|10|Diode,1N4007,Rectifier|/assets/diode-1n4007.jpg|||General-purpose rectifier diode, 1000V reverse voltage, 1A forward current.
