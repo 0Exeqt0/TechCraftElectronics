@@ -1339,6 +1339,26 @@ section{
   text-decoration:line-through;
 }
 
+/* Used instead of pills once a group has more than a handful of
+   variants (see VARIANT_PILL_LIMIT in productCardHTML) — a long
+   list of options belongs in a dropdown, not a wall of pills. */
+.variant-select{
+  width:100%;
+  padding:9px 12px;
+  border-radius:10px;
+  border:1px solid var(--chip-border);
+  background:var(--bg-alt);
+  color:var(--text-body);
+  font-size:.82rem;
+  font-weight:600;
+  font-family:inherit;
+  outline:none;
+}
+
+.variant-select:focus{
+  border-color:var(--teal-500);
+}
+
 
 /* =========================================================
    CART BUTTON + BADGE
@@ -2873,7 +2893,23 @@ function productCardHTML(p, opts){
   const lowStock = p.stock > 0 && p.stock <= 5;
   const outOfStock = p.stock <= 0;
 
-  const variantRow = opts.variants ? `
+  // Pill buttons read great for a handful of short options (LED
+  // colors), but long labels in a big set (17 logic-IC part numbers)
+  // force each pill onto its own line on a narrow card — it just
+  // *looks* stacked because no two pills fit on one row, not because
+  // flex-wrap is broken. Past this threshold, use a compact dropdown
+  // instead, which scales to any number of variants.
+  const VARIANT_PILL_LIMIT = 6;
+  const variantRow = opts.variants ? (
+    opts.variants.length > VARIANT_PILL_LIMIT ? `
+    <div class="variant-row">
+      <select class="variant-select" data-group="${esc(opts.group)}">
+        ${opts.variants.map(v => `
+          <option value="${v.id}" ${v.id===p.id?"selected":""} ${v.stock<=0?"disabled":""}>
+            ${esc(v.variant || v.name)}${v.stock<=0?" (Out of stock)":""}
+          </option>`).join("")}
+      </select>
+    </div>` : `
     <div class="variant-row">
       ${opts.variants.map(v => `
         <button type="button"
@@ -2883,7 +2919,8 @@ function productCardHTML(p, opts){
           title="${v.stock<=0?"Out of stock":""}">
           ${esc(v.variant || v.name)}
         </button>`).join("")}
-    </div>` : "";
+    </div>`
+  ) : "";
 
   return `
     <div class="card product-card" data-id="${p.id}" ${opts.group ? `data-group="${esc(opts.group)}"` : ""}>
@@ -2980,6 +3017,10 @@ function renderProducts(){
   grid.querySelectorAll(".qty-plus").forEach(b => b.addEventListener("click", () => stepQty(b.dataset.id, 1)));
   grid.querySelectorAll(".qty-minus").forEach(b => b.addEventListener("click", () => stepQty(b.dataset.id, -1)));
   grid.querySelectorAll(".add-btn").forEach(b => b.addEventListener("click", () => addToCartQuick(b.dataset.id)));
+  grid.querySelectorAll(".variant-select").forEach(sel => sel.addEventListener("change", () => {
+    selectedVariant[sel.dataset.group] = sel.value;
+    renderProducts();
+  }));
   grid.querySelectorAll(".variant-btn").forEach(b => b.addEventListener("click", () => {
     selectedVariant[b.dataset.group] = b.dataset.variantId;
     renderProducts();
