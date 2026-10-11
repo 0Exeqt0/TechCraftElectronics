@@ -35,38 +35,39 @@
 # To retire a product: delete its line (existing order codes still
 # decode correctly — the code carries its own product name/price).
 # Then commit and push this file.
-
-p1|I2C LCD Module|📟|Modules|I2C Module|4|40|2|LCD,I2C,Display|assets/i2c_LCD_module.png|||I2C backpack-equipped LCD module for easy 4-wire display wiring.
+id|name|icon|category|package|pins|price|stock|tags|image|group|variant|description
+p1|I2C LCD Module|📟|Modules|I2C Module|4|40|10|LCD,I2C,Display|assets/i2c_LCD_module.png|||I2C backpack-equipped LCD module for easy 4-wire display wiring.
 
 # --- 5mm LED: one shop card, three color variants ---
 p2|5mm LED - Red|🔴|Passives|5mm THT|2|3|10|LED,5mm,Red|assets/led_red.png|5mm LED|Red|Standard 5mm red LED for indicators and general-purpose lighting.
 p3|5mm LED - Green|🟢|Passives|5mm THT|2|3|10|LED,5mm,Green|assets/led_green.png|5mm LED|Green|Standard 5mm green LED for indicators and general-purpose lighting.
 p4|5mm LED - Blue|🔵|Passives|5mm THT|2|3|10|LED,5mm,Blue|assets/led_blue.png|5mm LED|Blue|Standard 5mm blue LED for indicators and general-purpose lighting.
 
-p5|MG90S Micro Servo|⚙️|Modules|Servo Motor|3|65|1|Servo,MG90S,Actuator|assets/servo.png|||Metal-gear micro servo motor for robotics and small mechanical projects.
-p6|Breadboard|🟩|Tools & Supplies|830-Tie|0|90|3|Breadboard,Prototyping|/assets/Breadboard.png|||Solderless breadboard for prototyping circuits.
-p7|LCD1602 Display (Blue Screen)|🖥️|Modules|16x2 Module|16|90|1|LCD,16x2,Display|/assets/lcd1602-blue.jpg|||16x2 character LCD with blue backlight for text output.
-p8|Arduino Uno (ATmega328P)|🧠|Microcontrollers|Arduino Board|20|290|1|Arduino,ATmega328P,Board|assets/arduino_uno.png|||Arduino Uno development board built on the ATmega328P microcontroller.
-p9|18650 Battery Holder|🔋|Power|Battery Holder|2|30|1|Battery Holder,18650|/assets/battery-holder-18650.jpg|||Single-cell holder for 18650 lithium-ion batteries.
-p10|Active Buzzer|🔊|Modules|Active Buzzer|2|10|4|Buzzer,Alarm,Sound|/assets/buzzer.jpg|||Active buzzer module for simple alarms and audio feedback.
-p11|10K 3-Pin Potentiometer|🎚️|Passives|3-Pin THT|3|20|5|Potentiometer,10K,Variable Resistor|/assets/potentiometer-10k.jpg|||10K ohm rotary potentiometer for adjustable analog input.
-p12|MAX7219 Dot Matrix Module|🔢|Modules|8x8 Module|5|60|2|MAX7219,Dot Matrix,Display|/assets/DotMatrix.png|||8x8 LED dot matrix display driven by a MAX7219 controller.
-p13|4x4 Membrane Keypad|🔢|Modules|Membrane Keypad|8|40|1|Keypad,4x4,Input|/assets/keypad-4x4.jpg|||16-button membrane keypad for numeric and command input.
-p14|Male-to-Female Jumper Wires (20cm)|🔌|Tools & Supplies|20cm M-F|0|60|1|Jumper Wire,M-F,20cm|/assets/DupontWire.png|||Male-to-female jumper wire pack, 20cm length, for breadboard wiring.
-p15|Single Row Male Header Pins (10pcs)|📌|Tools & Supplies|10-Pin Strip|10|10|5|Header Pins,Male,Single Row|/assets/header-pins-single-row.jpg|||Breakable single-row male header pin strips, 10 pieces per pack.
-p16|Arduino Uno Cable (30cm)|🔌|Tools & Supplies|USB-B to USB-A 30cm|0|50|2|Arduino,USB Cable,30cm|/assets/arduino-cable-30cm.jpg|||USB cable for connecting an Arduino Uno to a computer.
-p17|Stepper Motor with Driver Module|⚙️|Modules|28BYJ-48 + ULN2003|5|90|1|Stepper Motor,28BYJ-48,ULN2003|/assets/Stepper.png|||28BYJ-48 stepper motor bundled with its ULN2003 driver module.
-p18|Storage Box|📦|Tools & Supplies|Plastic Box|0|150|1|Storage,Organizer|/assets/storage-box.jpg|||Plastic storage box for organizing small electronic components.
-p19|5528 LDR Photoresistor|💡|Sensors|5528 THT|2|3|39|LDR,Photoresistor,Light Sensor|/assets/LDR.png|||Light-dependent resistor for basic light-sensing circuits.
-p20|8x12cm PCB (Double-Sided)|🟫|Tools & Supplies|8x12cm Prototype|0|50|3|PCB,Double-Sided,Prototyping|/assets/pcb-8x12-double-sided.jpg|||Double-sided prototyping PCB board, 8x12cm.
-p21|2N3904 NPN Transistor|🔺|Semiconductors|TO-92|3|3|47|Transistor,NPN,2N3904|/assets/transistor-2n3904.jpg|||General-purpose NPN transistor for switching and amplification.
+p5|MG90S Micro Servo|⚙️|Modules|Servo Motor|3|65|10|Servo,MG90S,Actuator|assets/servo.png|||Metal-gear micro servo motor for robotics and small mechanical projects.
+p6|Breadboard|🟩|Tools & Supplies|830-Tie|0|90|10|Breadboard,Prototyping|/assets/Breadboard.png|||Solderless breadboard for prototyping circuits.
+p7|LCD1602 Display (Blue Screen)|🖥️|Modules|16x2 Module|16|90|10|LCD,16x2,Display|/assets/lcd1602-blue.jpg|||16x2 character LCD with blue backlight for text output.
+p8|Arduino Uno (ATmega328P)|🧠|Microcontrollers|Arduino Board|20|290|10|Arduino,ATmega328P,Board|assets/arduino_uno.png|||Arduino Uno development board built on the ATmega328P microcontroller.
+p9|18650 Battery Holder|🔋|Power|Battery Holder|2|30|10|Battery Holder,18650|/assets/battery-holder-18650.jpg|||Single-cell holder for 18650 lithium-ion batteries.
+p10|Active Buzzer|🔊|Modules|Active Buzzer|2|10|10|Buzzer,Alarm,Sound|/assets/buzzer.jpg|||Active buzzer module for simple alarms and audio feedback.
+p11|10K 3-Pin Potentiometer|🎚️|Passives|3-Pin THT|3|20|10|Potentiometer,10K,Variable Resistor|/assets/potentiometer-10k.jpg|||10K ohm rotary potentiometer for adjustable analog input.
+p12|MAX7219 Dot Matrix Module|🔢|Modules|8x8 Module|5|60|10|MAX7219,Dot Matrix,Display|assets/DotMatrix.png|||8x8 LED dot matrix display driven by a MAX7219 controller.
+p13|4x4 Membrane Keypad|🔢|Modules|Membrane Keypad|8|40|10|Keypad,4x4,Input|/assets/keypad-4x4.jpg|||16-button membrane keypad for numeric and command input.
+p14|Male-to-Female Jumper Wires (20cm)|🔌|Tools & Supplies|20cm M-F|0|60|10|Jumper Wire,M-F,20cm|/assets/DupontWire.png|||Male-to-female jumper wire pack, 20cm length, for breadboard wiring.
+p15|Single Row Male Header Pins (10pcs)|📌|Tools & Supplies|10-Pin Strip|10|10|10|Header Pins,Male,Single Row|/assets/header-pins-single-row.jpg|||Breakable single-row male header pin strips, 10 pieces per pack.
+p16|Arduino Uno Cable (30cm)|🔌|Tools & Supplies|USB-B to USB-A 30cm|0|50|10|Arduino,USB Cable,30cm|/assets/arduino-cable-30cm.jpg|||USB cable for connecting an Arduino Uno to a computer.
+p17|Stepper Motor with Driver Module|⚙️|Modules|28BYJ-48 + ULN2003|5|90|10|Stepper Motor,28BYJ-48,ULN2003|/assets/Stepper.png|||28BYJ-48 stepper motor bundled with its ULN2003 driver module.
+p18|Storage Box|📦|Tools & Supplies|Plastic Box|0|150|10|Storage,Organizer|/assets/storage-box.jpg|||Plastic storage box for organizing small electronic components.
+p19|5528 LDR Photoresistor|💡|Sensors|5528 THT|2|3|10|LDR,Photoresistor,Light Sensor|/assets/LDR.png|||Light-dependent resistor for basic light-sensing circuits.
+p20|8x12cm PCB (Double-Sided)|🟫|Tools & Supplies|8x12cm Prototype|0|50|10|PCB,Double-Sided,Prototyping|/assets/pcb-8x12-double-sided.jpg|||Double-sided prototyping PCB board, 8x12cm.
+p21|2N3904 NPN Transistor|🔺|Semiconductors|TO-92|3|3|10|Transistor,NPN,2N3904|/assets/transistor-2n3904.jpg|||General-purpose NPN transistor for switching and amplification.
 
-p22|7-Segment Display 5611AS (Common Cathode)|🔟|Displays|0.56in Single Digit|10|15|8|7-Segment,Common Cathode,5611AS|/assets/7-segment-common-cathode.jpg|7-Segment Display|Common Cathode|Single-digit 7-segment display, common cathode configuration.
-p23|7-Segment Display 5611BS (Common Anode)|🔟|Displays|0.56in Single Digit|10|15|7|7-Segment,Common Anode,5611BS|/assets/7-segment-common-anode.jpg|7-Segment Display|Common Anode|Single-digit 7-segment display, common anode configuration.
+p22|7-Segment Display 5611AS (Common Cathode)|🔟|Displays|0.56in Single Digit|10|15|10|7-Segment,Common Cathode,5611AS|/assets/7-segment-common-cathode.jpg|7-Segment Display|Common Cathode|Single-digit 7-segment display, common cathode configuration.
+p23|7-Segment Display 5611BS (Common Anode)|🔟|Displays|0.56in Single Digit|10|15|10|7-Segment,Common Anode,5611BS|/assets/7-segment-common-anode.jpg|7-Segment Display|Common Anode|Single-digit 7-segment display, common anode configuration.
 
-p24|Infrared Remote Control Kit|📡|Modules|IR Receiver + Remote|3|50|1|Infrared,Remote,IR Receiver|/assets/ir-remote-kit.jpg|||IR receiver module with matching remote control for wireless input.
-p25|18650 Lithium-Ion Battery|🔋|Power|Li-ion Cell|2|120|3|Battery,18650,Li-ion|/assets/battery-18650.jpg|||Rechargeable 18650 lithium-ion cell for portable power projects.
+p24|Infrared Remote Control Kit|📡|Modules|IR Receiver + Remote|3|50|10|Infrared,Remote,IR Receiver|/assets/ir-remote-kit.jpg|||IR receiver module with matching remote control for wireless input.
+p25|18650 Lithium-Ion Battery|🔋|Power|Li-ion Cell|2|120|10|Battery,18650,Li-ion|/assets/battery-18650.jpg|||Rechargeable 18650 lithium-ion cell for portable power projects.
 p26|1N4007 Rectifier Diode|➡️|Semiconductors|DO-41|2|4|10|Diode,1N4007,Rectifier|/assets/diode-1n4007.jpg|||General-purpose rectifier diode, 1000V reverse voltage, 1A forward current.
+
 
 # --- Logic IC: one shop card, 17 chip variants (basic gates + ---
 #     other 74LS-series ICs + one EEPROM). PRICE AND STOCK ARE
@@ -89,6 +90,9 @@ p39|74LS192 Synchronous Up/Down Decade Counter|🔢|ICs|DIP-16|16|30|5|Counter,T
 p40|74LS133 13-Input NAND Gate|🔲|ICs|DIP-16|16|30|5|Logic Gate,TTL,NAND,13-Input|assets/LogicIC.png|Logic IC|74LS133 (13-input NAND)|13-input NAND gate — single large NAND gate for wide combinational logic.
 p41|74LS151 8-Input Multiplexer|🔀|ICs|DIP-16|16|35|5|Multiplexer,TTL,8-Input|assets/LogicIC.png|Logic IC|74LS151 (Multiplexer)|8-input multiplexer — selects one of eight data inputs to a single output line.
 p42|74LS138 3-to-8 Demultiplexer/Decoder|🔀|ICs|DIP-16|16|30|5|Demultiplexer,TTL,Decoder,3-to-8|assets/LogicIC.png|Logic IC|74LS138 (Demultiplexer)|3-to-8 line demultiplexer/decoder — decodes a 3-bit binary input to one of eight active-low outputs.
+
+
+#--- Memory IC
 p43|AT28C16 16K (2K x 8) Parallel EEPROM|💾|ICs|DIP-24|24|100|5|EEPROM,Memory,Parallel|assets/LogicIC.png|Memory IC|AT28C16 (DIP-24)|16K (2K x 8) parallel EEPROM — electrically erasable, byte-programmable memory for microcontroller and retro-computing projects.
 
 # --- Resistor and Capacitor: add specific values here later, same
